@@ -52,6 +52,12 @@ var Profile = function() {
                 barColor: '#5C9BD1',
                 negBarColor: '#e02222'
             });
+
+            //change hash tag
+            $('.nav-tabs').find('[data-toggle = "tab"]').on('click', function () {
+                var currentHash = $(this).attr('href');
+                document.location.href = document.location.origin + document.location.pathname + currentHash;
+            });
         }
 
     };
