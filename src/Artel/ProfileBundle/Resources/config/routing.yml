@@ -1,0 +1,25 @@
+artel_profile_homepage:
+    path:     /profile/{id}
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:index }
+
+artel_profile_edit:
+    path:     /profile/{id}/edit_form
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:editForm }
+
+artel_profile_personal_information:
+    path:     /profile/{id}/personal_information
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:personalInformation }
+
+artel_profile_submit_personal_information:
+    path:     /profile/{id}/personal_information/submit
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:submitPersonalInformation }
+    requirements: { _method: post }
+
+artel_profile_professional_skills:
+    path:     /profile/{id}/professional_skills
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:professionalSkills }
+
+artel_profile_submit_professional_skills:
+    path:     /profile/{id}/professional_skills/submit
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:submitProfessionalSkills }
+    requirements: { _method: post }

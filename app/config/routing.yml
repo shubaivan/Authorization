@@ -1,0 +1,3 @@
+artel_profile:
+    resource: "@ArtelProfileBundle/Resources/config/routing.yml"
+    prefix:   /

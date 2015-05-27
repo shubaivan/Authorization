@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--<parameters></parameters>-->
+
+    <services>
+        <service id="artel.profile.developer.repository"
+                 class="Artel\ProfileBundle\Entity\DeveloperRepository"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository">
+            <argument>ArtelProfileBundle:Developer</argument>
+        </service>
+
+        <service id="artel.profile.form.type.skills"
+                 class="Artel\ProfileBundle\Form\Fields\SkillsType">
+            <tag name="form.type" alias="skills"/>
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
+        </service>
+
+        <service id="artel.profile.form.type.mainSkill"
+                 class="Artel\ProfileBundle\Form\Fields\MainSkillType">
+            <tag name="form.type" alias="mainSkill"/>
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
+        </service>
+    </services>
+
+</container>

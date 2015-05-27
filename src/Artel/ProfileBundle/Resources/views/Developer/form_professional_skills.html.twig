@@ -1,0 +1,10 @@
+
+{#{% include "ArtelProfileBundle:Developer:profile_sidebar.html.twig" %}#}
+
+{{ form_errors(form) }}
+{{ form_start(form, {'action': path('artel_profile_submit_professional_skills', {'id': developer.id}), 'method': 'POST'}) }}
+
+<span style="font-weight: bold;">{{ form_label(form.english) }}</span>
+{{ form_widget(form.english, {'attr': {'class': 'form-control'}}) }}
+
+{{ form_end(form) }}

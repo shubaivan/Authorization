@@ -1,0 +1,12 @@
+{#{% include "ArtelProfileBundle:Developer:profile_sidebar.html.twig" %}#}
+
+{{ form_errors(form) }}
+{{ form_start(form, {'action': path('artel_profile_submit_personal_information', {'id': developer.id}), 'method': 'POST'}) }}
+
+<span style="font-weight: bold;">{{ form_label(form.firstname) }}</span>
+{{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+<br/>
+<span style="font-weight: bold;">{{ form_label(form.lastname) }}</span>
+{{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+
+{{ form_end(form) }}
