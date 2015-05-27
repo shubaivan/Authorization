@@ -207,63 +207,65 @@
                                                 <div class="caption caption-md margin-bottom-15">
                                                     <span class="caption-subject font-green bold uppercase">Proffesional skills</span>
                                                 </div>
-												<form action="#">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Speciality</label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Junior</option>
-                                                            <option>Medium</option>
-                                                            <option>Senior</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <select class="bs-select form-control">
-                                                            <option>Frontend</option>
-                                                            <option>Backend</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <select class="form-control input-xlarge select2me" data-placeholder="Select...">
-                                                            <option value=""></option>
-                                                            <option value="">Option1</option>
-                                                            <option value="">Option2</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Professional Skills</label>
-                                                        <select class="form-control xlarge select2me" data-placeholder="Select Skills">
-                                                            <option value=""></option>
-                                                            <option value="">Option1</option>
-                                                            <option value="">Option2</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">English Level</label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Beginner</option>
-                                                            <option>Elementary</option>
-                                                            <option>Pre-Intermediate</option>
-                                                            <option>Intermediate</option>
-                                                            <option>Upper-Intermediate</option>
-                                                            <option>Advanced</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">When you create your first project</label>
-                                                        <div class="input-group input-medium date date-picker" data-date="10/2012" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">
-                                                            <input type="text" class="form-control" readonly>
-                                                            <span class="input-group-btn">
-                                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Rate</label>
-                                                        <div class="input-medium">
-                                                            <input id="touchspin_demo1" type="text" value="1" name="demo1" class="form-control">
-                                                        </div>
-                                                    </div>
-												</form>
+                                                {% include 'ArtelProfileBundle:Developer:form_professional_skills.html.twig' %}
+                                                {#<hr>#}
+												{#<form action="#">#}
+                                                    {#<div class="form-group">#}
+                                                        {#<label class="control-label">Speciality</label>#}
+                                                        {#<select class="bs-select form-control">#}
+                                                            {#<option>Junior</option>#}
+                                                            {#<option>Medium</option>#}
+                                                            {#<option>Senior</option>#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<select class="bs-select form-control">#}
+                                                            {#<option>Frontend</option>#}
+                                                            {#<option>Backend</option>#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<select class="form-control input-xlarge select2me" data-placeholder="Select...">#}
+                                                            {#<option value=""></option>#}
+                                                            {#<option value="">Option1</option>#}
+                                                            {#<option value="">Option2</option>#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<label class="control-label">Professional Skills</label>#}
+                                                        {#<select class="form-control xlarge select2me" data-placeholder="Select Skills">#}
+                                                            {#<option value=""></option>#}
+                                                            {#<option value="">Option1</option>#}
+                                                            {#<option value="">Option2</option>#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<label class="control-label">English Level</label>#}
+                                                        {#<select class="bs-select form-control">#}
+                                                            {#<option>Beginner</option>#}
+                                                            {#<option>Elementary</option>#}
+                                                            {#<option>Pre-Intermediate</option>#}
+                                                            {#<option>Intermediate</option>#}
+                                                            {#<option>Upper-Intermediate</option>#}
+                                                            {#<option>Advanced</option>#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<label class="control-label">When you create your first project</label>#}
+                                                        {#<div class="input-group input-medium date date-picker" data-date="10/2012" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">#}
+                                                            {#<input type="text" class="form-control" readonly>#}
+                                                            {#<span class="input-group-btn">#}
+                                                            {#<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>#}
+                                                            {#</span>#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                    {#<div class="form-group">#}
+                                                        {#<label class="control-label">Rate</label>#}
+                                                        {#<div class="input-medium">#}
+                                                            {#<input id="touchspin_demo1" type="text" value="1" name="demo1" class="form-control">#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+												{#</form>#}
 											</div>
 											<!-- END CHANGE PASSWORD TAB -->
                                             <!-- PERSONAL INFO TAB -->
@@ -271,6 +273,8 @@
                                                 <div class="caption caption-md margin-bottom-15">
                                                     <span class="caption-subject font-green bold uppercase">Personal information</span>
                                                 </div>
+                                                {% include 'ArtelProfileBundle:Developer:form_personal_information.html.twig' %}
+                                                <hr>
                                                 <form role="form" action="#">
                                                     <div class="form-group">
                                                         <label class="control-label">First Name</label>

@@ -281,7 +281,7 @@ var ComponentsFormTools = function () {
 
     var handleBootstrapTouchSpin = function() {
 
-        $("#touchspin_demo1").TouchSpin({          
+        $(".touchspin_demo1").TouchSpin({
             buttondown_class: 'btn green',
             buttonup_class: 'btn green',
             min: 0,
