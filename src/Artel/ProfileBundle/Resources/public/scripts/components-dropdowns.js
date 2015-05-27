@@ -244,6 +244,11 @@ var ComponentsDropdowns = function () {
         $('#my_multi_select2').multiSelect({
             selectableOptgroup: true
         });
+
+        $('.chosen-select').chosen({
+            placeholder_text_multiple: 'Select Skills'
+        });
+
     }
 
     return {
