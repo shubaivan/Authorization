@@ -208,6 +208,7 @@ var Layout = function () {
                 $(this).addClass('active');
                 $(this).children('a > span.arrow').addClass('open');
             });
+
             $(this).parents('li').addClass('active');
 
             if (Metronic.getViewPort().width < resBreakpointMd && $('.page-sidebar').hasClass("in")) { // close the menu on mobile view while laoding a page 
