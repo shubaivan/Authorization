@@ -94,7 +94,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#personal-information');
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_personal_information.html.html.twig',array(
@@ -121,7 +121,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#professional-skills');
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_professional_skills.html.twig',array(
