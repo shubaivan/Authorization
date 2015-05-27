@@ -19,9 +19,9 @@ class DeveloperPersonalInformationType extends AbstractType
             ->add('email', null, array('label' => 'Email', 'max_length' => 255, 'required' => false))
             ->add('country', 'choice', array('label' => 'Country', 'max_length' => 255, 'required' => false,
 				'choices'   => array('Ukraine' => 'Ukraine', 'Russia' => 'Russia', 'Belarus' => 'Belarus', 'Crimea' => 'Crimea')))
-            ->add('company', null, array('label' => 'Company', 'max_length' => 255))
+//            ->add('company', null, array('label' => 'Company', 'max_length' => 255))
             ->add('skype', null, array('label' => 'Skype', 'max_length' => 255, 'required' => false))
-            ->add('telephone', null, array('label' => 'Telephone', 'max_length' => 255, 'required' => false))
+            ->add('telephone', null, array('label' => 'Phone', 'max_length' => 255, 'required' => false, 'attr' => array('data-inputmask' => "'alias': 'date'")))
             ->add('save', 'submit');
     }
 

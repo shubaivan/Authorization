@@ -14,10 +14,23 @@ class DeveloperProfileController extends Controller
     public function indexAction($id)
     {
         $profileRepository = $this->get('artel.profile.developer.repository');
+        $formType = new DeveloperPersonalInformationType();
         $developer = $profileRepository->findOneById($id);
+
+        $form = $this->createForm($formType, $developer);
+        $personalInformationForm = $form->createView();
+
+        $formType = new DeveloperProfessionalSkillsType();
+        $form = $this->createForm($formType, $developer);
+        $professionalSkillsForm = $form->createView();
+
 //        dump($developer);
 //        die;
-        return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig');
+        return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig',array(
+            'developer' => $developer,
+            'infoForm' => $personalInformationForm,
+            'skillsForm' => $professionalSkillsForm
+        ));
     }
 
     public function editFormAction($id)
@@ -81,7 +94,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_personal_information', array('id' => $id)));
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_personal_information.html.html.twig',array(
@@ -108,7 +121,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_professional_skills', array('id' => $id)));
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_professional_skills.html.twig',array(

@@ -281,7 +281,7 @@ var ComponentsFormTools = function () {
 
     var handleBootstrapTouchSpin = function() {
 
-        $("#touchspin_demo1").TouchSpin({          
+        $(".touchspin_demo1").TouchSpin({
             buttondown_class: 'btn green',
             buttonup_class: 'btn green',
             min: 0,
@@ -379,7 +379,7 @@ var ComponentsFormTools = function () {
         $("#mask_date2").inputmask("d/m/y", {
             "placeholder": "dd/mm/yyyy"
         }); //multi-char placeholder
-        $("#mask_phone").inputmask("mask", {
+        $(".mask_phone").inputmask("mask", {
             "mask": "(999) 999-9999"
         }); //specifying fn & options
         $("#mask_tin").inputmask({
