@@ -8,6 +8,7 @@ var Profile = function() {
         init: function() {
         
             Profile.initMiniCharts();
+            Profile.uploadUserPick();
         },
 
         initMiniCharts: function() {
@@ -57,6 +58,35 @@ var Profile = function() {
             $('.nav-tabs').find('[data-toggle = "tab"]').on('click', function () {
                 var currentHash = $(this).attr('href');
                 document.location.href = document.location.origin + document.location.pathname + currentHash;
+            });
+        },
+
+        uploadUserPick: function(){
+            $('.profile-userpic').find('img')
+                .attr('title', 'Click for upload new image')
+                .on('click', function(){
+                    $("#Avatar").click();
+            });
+
+            $("#Avatar").change(function(){
+                if ($('#Avatar').get(0).files[0].size<5000000) {
+                    $("form#avatarForm").submit();
+                } else {
+                    alert('File size is too large.');
+                }
+            });
+
+            $("form#avatarForm").ajaxForm({
+                data: {},
+                beforeSend: function() {},
+                uploadProgress: function(event, position, total, percentComplete) {},
+                complete: function(data) {
+                    $("div.avatar img").attr('src', data.responseText).addClass('statPhoto');
+                    $("div.avatarEdit img").attr('src', data.responseText).addClass('statPhoto');
+                    $("#photo").val(data.responseText);
+
+                },
+                error: function(er){}
             });
         }
 

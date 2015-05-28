@@ -23,3 +23,8 @@ artel_profile_submit_professional_skills:
     path:     /profile/{id}/professional_skills/submit
     defaults: { _controller: ArtelProfileBundle:DeveloperProfile:submitProfessionalSkills }
     requirements: { _method: post }
+
+artel_profile_photo_upload:
+    path:     /profile/{id}/photo_upload
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:photoUpload }
+    requirements: { _method: post }

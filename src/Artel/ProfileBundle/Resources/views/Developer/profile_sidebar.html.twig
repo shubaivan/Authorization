@@ -17,6 +17,18 @@
             </div>
         </div>
         <!-- END SIDEBAR USER TITLE -->
+
+        <!-- PHOTO UPLOAD START -->
+        <div class="photoLoader">
+            <form id="avatarForm" action={{ path("artel_profile_photo_upload", {'id': developer.id}) }} method="post" enctype="multipart/form-data">
+                <label>
+                    <input id="Avatar" type="file" name="file"/>
+                    <input type="submit" name="submitBtn" class="sbtn" value="Upload" />
+                </label>
+            </form>
+        </div>
+        <!-- PHOTO UPLOAD END -->
+
         <!-- STAT -->
         <div class="row list-separated profile-stat">
             <div class="col-md-4 col-sm-4 col-xs-6">
@@ -49,7 +61,7 @@
         <div class="profile-usermenu">
             <ul class="nav">
                 <li class="active">
-                    <a href="extra_profile_account.html">
+                    <a href="#extra_profile_account.html">
                         <i class="icon-settings"></i>
                         Account Settings </a>
                 </li>

@@ -29,6 +29,17 @@
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </call>
         </service>
+
+
+
+        <service id="artel.profile.image_worker"
+                 class="Artel\ProfileBundle\Helper\ImageWorker">
+        </service>
+
+        <service id="artel.profile.file_uploader"
+                 class="Artel\ProfileBundle\Helper\FileUploader">
+            <argument type="service" id="artel.profile.image_worker" />
+        </service>
     </services>
 
 </container>

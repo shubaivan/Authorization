@@ -21,6 +21,7 @@ New Profile Page
   margin: 0 auto;
   width: 50%;
   height: 50%;
+  cursor: pointer;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
@@ -143,6 +144,9 @@ New Profile Page
   font-size: 14px;
   font-weight: 600;
   color: #5b9bd1;
+}
+#avatarForm {
+    display: none;
 }
 
 /* END PROFILE SIDEBAR */
