@@ -67,6 +67,27 @@ var Profile = function() {
                 .on('click', function(){
                     $("#Avatar").click();
             });
+
+            $("#Avatar").change(function(){
+                if ($('#Avatar').get(0).files[0].size<5000000) {
+                    $("form#avatarForm").submit();
+                } else {
+                    alert('File size is too large.');
+                }
+            });
+
+            $("form#avatarForm").ajaxForm({
+                data: {},
+                beforeSend: function() {},
+                uploadProgress: function(event, position, total, percentComplete) {},
+                complete: function(data) {
+                    $("div.avatar img").attr('src', data.responseText).addClass('statPhoto');
+                    $("div.avatarEdit img").attr('src', data.responseText).addClass('statPhoto');
+                    $("#photo").val(data.responseText);
+
+                },
+                error: function(er){}
+            });
         }
 
     };
