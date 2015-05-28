@@ -77,5 +77,40 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
-#            sluggable:     true
+            sluggable:     true
 #            translatable:  true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: UserBundle\Entity\User
+
+hwi_oauth:
+    connect:
+      account_connector: app.provider.user_provider
+      confirmation: false
+      # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: main
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+#            facebook: facebookId
+#            vkontakte: vkontakteId
+            linkedin: linkedinId
+    resource_owners:
+#        facebook:
+#            type:                facebook
+#            client_id:           "%facebook_app_id%"
+#            client_secret:       "%facebook_app_secret%"
+#            scope:               "user_photos"
+#        vkontakte:
+#            type:                vkontakte
+#            client_id:           "%vkontakte_app_id%"
+#            client_secret:       "%vkontakte_app_secret%"
+#            scope:               "photos"
+        linkedin:
+            type:           linkedin
+            client_id:      "%linkedin_app_id%"
+            client_secret:  "%linkedin_app_secret%"
+            scope:          "r_emailaddress"

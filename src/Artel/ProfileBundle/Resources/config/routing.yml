@@ -28,3 +28,11 @@ artel_profile_photo_upload:
     path:     /profile/{id}/photo_upload
     defaults: { _controller: ArtelProfileBundle:DeveloperProfile:photoUpload }
     requirements: { _method: post }
+
+ld:
+    pattern: /ld
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'ArtelProfileBundle:Static:index.html.twig'
+        maxAge:       86400
+        sharedMaxAge: 86400
