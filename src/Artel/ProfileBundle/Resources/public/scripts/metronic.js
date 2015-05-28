@@ -13,7 +13,7 @@ var Metronic = function() {
 
     var assetsPath = '';
 
-    var globalImgPath = 'img/';
+    var globalImgPath = '/bundles/artelprofile/img/';
 
     var globalPluginsPath = 'global/plugins/';
 
