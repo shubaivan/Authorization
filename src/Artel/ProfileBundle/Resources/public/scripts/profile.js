@@ -8,6 +8,7 @@ var Profile = function() {
         init: function() {
         
             Profile.initMiniCharts();
+            Profile.uploadUserPick();
         },
 
         initMiniCharts: function() {
@@ -57,6 +58,14 @@ var Profile = function() {
             $('.nav-tabs').find('[data-toggle = "tab"]').on('click', function () {
                 var currentHash = $(this).attr('href');
                 document.location.href = document.location.origin + document.location.pathname + currentHash;
+            });
+        },
+
+        uploadUserPick: function(){
+            $('.profile-userpic').find('img')
+                .attr('title', 'Click for upload new image')
+                .on('click', function(){
+                    console.log(this);
             });
         }
 
