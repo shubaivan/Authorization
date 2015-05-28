@@ -65,7 +65,7 @@ var Profile = function() {
             $('.profile-userpic').find('img')
                 .attr('title', 'Click for upload new image')
                 .on('click', function(){
-                    console.log(this);
+                    $("#Avatar").click();
             });
         }
 

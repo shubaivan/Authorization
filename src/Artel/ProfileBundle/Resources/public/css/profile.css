@@ -145,6 +145,9 @@ New Profile Page
   font-weight: 600;
   color: #5b9bd1;
 }
+#avatarForm {
+    display: none;
+}
 
 /* END PROFILE SIDEBAR */
 /* RESPONSIVE MODE */
