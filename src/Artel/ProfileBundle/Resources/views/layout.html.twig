@@ -86,7 +86,6 @@
 {% endblock %}
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-{% block javascripts %}{% endblock %}
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="{{ asset('bundles/artelprofile/plugins/respond.min.js') }}"></script>
@@ -145,6 +144,7 @@
 <script src="{{ asset('bundles/artelprofile/scripts/components-form-tools.js') }}"></script>
 <script src="{{ asset('bundles/artelprofile/scripts/components-dropdowns.js') }}"></script>
 <script src="{{ asset('bundles/artelprofile/scripts/components-pickers.js') }}"></script>
+<script src="{{ asset('bundles/artelprofile/scripts/jquery.form.js') }}"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
@@ -159,6 +159,7 @@
         ComponentsPickers.init();
     });
 </script>
+{% block javascripts %}{% endblock %}
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

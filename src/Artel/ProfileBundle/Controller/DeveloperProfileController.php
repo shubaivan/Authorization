@@ -14,9 +14,13 @@ class DeveloperProfileController extends Controller
     public function indexAction($id)
     {
         $profileRepository = $this->get('artel.profile.developer.repository');
-        $formType = new DeveloperPersonalInformationType();
         $developer = $profileRepository->findOneById($id);
 
+        if (! $developer) {
+            throw $this->createNotFoundException('Unable to find a profile.');
+        }
+
+        $formType = new DeveloperPersonalInformationType();
         $form = $this->createForm($formType, $developer);
         $personalInformationForm = $form->createView();
 
@@ -24,58 +28,11 @@ class DeveloperProfileController extends Controller
         $form = $this->createForm($formType, $developer);
         $professionalSkillsForm = $form->createView();
 
-//        dump($developer);
-//        die;
         return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig',array(
             'developer' => $developer,
             'infoForm' => $personalInformationForm,
             'skillsForm' => $professionalSkillsForm
         ));
-    }
-
-    public function editFormAction($id)
-    {
-        $formType = new DeveloperType();
-        $profileRepository = $this->get('artel.profile.developer.repository');
-        $developer = $profileRepository->findOneById($id);
-
-        $form = $this->createForm($formType, $developer);
-        $response = $this->render('ArtelProfileBundle:'.$this->template.':form.html.twig',array(
-            'form' => $form->createView(),
-            'developer' => $developer
-        ));
-
-        return $response;
-    }
-
-    public function personalInformationAction($id)
-    {
-        $formType = new DeveloperPersonalInformationType();
-        $profileRepository = $this->get('artel.profile.developer.repository');
-        $developer = $profileRepository->findOneById($id);
-
-        $form = $this->createForm($formType, $developer);
-        $response = $this->render('ArtelProfileBundle:'.$this->template.':form_personal_information.html.twig',array(
-            'form' => $form->createView(),
-            'developer' => $developer
-        ));
-
-        return $response;
-    }
-
-    public function professionalSkillsAction($id)
-    {
-        $formType = new DeveloperProfessionalSkillsType();
-        $profileRepository = $this->get('artel.profile.developer.repository');
-        $developer = $profileRepository->findOneById($id);
-
-        $form = $this->createForm($formType, $developer);
-        $response = $this->render('ArtelProfileBundle:'.$this->template.':form_professional_skills.html.twig',array(
-            'form' => $form->createView(),
-            'developer' => $developer
-        ));
-
-        return $response;
     }
 
     public function submitPersonalInformationAction($id)
@@ -130,5 +87,31 @@ class DeveloperProfileController extends Controller
         ));
 
         return $response;
+    }
+
+    public function photoUploadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+
+        if (! $developer) {
+            throw $this->createNotFoundException('Unable to find a profile.');
+        }
+
+        $img = $developer->getImage();
+        if($img && file_exists($img)) {
+            unlink($img);
+        }
+
+        $uploader = $this->get('artel.profile.file_uploader');
+        $path = $uploader->uploadImage($request->files->get('file'));
+
+        $developer->setImage($path['url']);
+
+//        $em->persist($developer);
+        $em->flush();
+
+        return new Response('/'.$path['url']);
     }
 }
