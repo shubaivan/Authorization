@@ -1,3 +1,7 @@
+storage:
+    resource: "@StorageBundle/Resources/config/routing.xml"
+    prefix:   /
+
 artel_profile:
     resource: "@ArtelProfileBundle/Resources/config/routing.yml"
     prefix:   /
