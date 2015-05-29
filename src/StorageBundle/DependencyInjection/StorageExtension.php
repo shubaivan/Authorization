@@ -24,5 +24,35 @@ class StorageExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        if (!isset($config['amazon_s3']['aws_key'])) {
+            throw new \InvalidArgumentException(
+                'The option "acme_storage.amazon_s3.aws_key" must be set.'
+            );
+        }
+        $container->setParameter(
+            'acme_storage.amazon_s3.aws_key',
+            $config['amazon_s3']['aws_key']
+        );
+
+        if (!isset($config['amazon_s3']['aws_secret_key'])) {
+            throw new \InvalidArgumentException(
+                'The option "acme_storage.amazon_s3.aws_secret_key" must be set.'
+            );
+        }
+        $container->setParameter(
+            'acme_storage.amazon_s3.aws_secret_key',
+            $config['amazon_s3']['aws_secret_key']
+        );
+
+        if (!isset($config['amazon_s3']['base_url'])) {
+            throw new \InvalidArgumentException(
+                'The option "acme_storage.amazon_s3.base_url" must be set.'
+            );
+        }
+        $container->setParameter(
+            'acme_storage.amazon_s3.base_url',
+            $config['amazon_s3']['base_url']
+        );
     }
 }
