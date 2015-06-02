@@ -31,7 +31,7 @@ class DeveloperPersonalInformationType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Artel\ProfileBundle\Entity\Developer',
+            'data_class' => 'UserBundle\Entity\User',
             'validation_groups' => array('personal_information')
         ));
     }

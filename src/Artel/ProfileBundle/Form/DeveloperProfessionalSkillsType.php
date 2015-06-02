@@ -33,7 +33,7 @@ class DeveloperProfessionalSkillsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Artel\ProfileBundle\Entity\Developer',
+            'data_class' => 'UserBundle\Entity\User',
             'validation_groups' => array('professional_skills')
         ));
     }

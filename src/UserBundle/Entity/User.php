@@ -5,6 +5,7 @@ namespace UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -66,6 +67,71 @@ class User extends BaseUser
      * @ORM\Column(type="string")
      */
     protected $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="skype", type="string", length=255, nullable=true)
+     * @Assert\Length(min=3, max=255)
+     */
+    protected $skype;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
+     * @Assert\Length(min=3, max=255)
+     */
+    protected $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level", type="string", length=10, nullable=true)
+     */
+    private $level;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="qualification", type="string", length=80, nullable=true)
+     */
+    private $qualification;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="main_skill", type="string", length=80, nullable=true)
+     */
+    private $main_skill;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="skills", type="array", nullable=true)
+     */
+    private $skills = array();
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="english", type="string", length=30, nullable=true)
+     */
+    private $english;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rate", type="smallint", nullable=true)
+     */
+    private $rate;
 
     public function isFakeEmail()
     {
@@ -317,5 +383,221 @@ class User extends BaseUser
     public function getLinkedinAccessToken()
     {
         return $this->linkedinAccessToken;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set skype
+     *
+     * @param string $skype
+     *
+     * @return User
+     */
+    public function setSkype($skype)
+    {
+        $this->skype = $skype;
+
+        return $this;
+    }
+
+    /**
+     * Get skype
+     *
+     * @return string
+     */
+    public function getSkype()
+    {
+        return $this->skype;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     *
+     * @return User
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set level
+     *
+     * @param string $level
+     *
+     * @return User
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return string
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set qualification
+     *
+     * @param string $qualification
+     *
+     * @return User
+     */
+    public function setQualification($qualification)
+    {
+        $this->qualification = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Get qualification
+     *
+     * @return string
+     */
+    public function getQualification()
+    {
+        return $this->qualification;
+    }
+
+    /**
+     * Set mainSkill
+     *
+     * @param string $mainSkill
+     *
+     * @return User
+     */
+    public function setMainSkill($mainSkill)
+    {
+        $this->main_skill = $mainSkill;
+
+        return $this;
+    }
+
+    /**
+     * Get mainSkill
+     *
+     * @return string
+     */
+    public function getMainSkill()
+    {
+        return $this->main_skill;
+    }
+
+    /**
+     * Set skills
+     *
+     * @param array $skills
+     *
+     * @return User
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+
+        return $this;
+    }
+
+    /**
+     * Get skills
+     *
+     * @return array
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Set english
+     *
+     * @param string $english
+     *
+     * @return User
+     */
+    public function setEnglish($english)
+    {
+        $this->english = $english;
+
+        return $this;
+    }
+
+    /**
+     * Get english
+     *
+     * @return string
+     */
+    public function getEnglish()
+    {
+        return $this->english;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param integer $rate
+     *
+     * @return User
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return integer
+     */
+    public function getRate()
+    {
+        return $this->rate;
     }
 }

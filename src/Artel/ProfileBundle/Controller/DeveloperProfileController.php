@@ -7,6 +7,7 @@ use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Artel\ProfileBundle\Form\DeveloperCvType;
 use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\User;
 
 class DeveloperProfileController extends Controller
 {
@@ -14,8 +15,12 @@ class DeveloperProfileController extends Controller
 
     public function indexAction($id)
     {
-        $profileRepository = $this->get('artel.profile.developer.repository');
-        $developer = $profileRepository->findOneById($id);
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+
+//        $profileRepository = $this->get('artel.profile.developer.repository');
+//        $developer = $profileRepository->findOneById($id);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -43,7 +48,7 @@ class DeveloperProfileController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -107,7 +112,7 @@ class DeveloperProfileController extends Controller
         if ($img && file_exists($img)) {
             unlink($img);
         }
-        
+
         $uploader = $this->get('artel.profile.file_uploader');
         $path = $uploader->uploadImage($request->files->get('file'));
 
