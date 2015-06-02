@@ -1,29 +1,3 @@
-{#<form role="form" enctype="multipart/form-data" novalidate method="POST" id="create_post">#}
-    {#<fieldset>#}
-        {#<legend>Created Photo</legend>#}
-        {#<div>#}
-            {#{{ form_label(CvForm.title) }}#}
-            {#{{ form_widget(CvForm.title) }}#}
-            {#<div id="clear"></div>#}
-        {#</div>#}
-
-        {#<div>#}
-            {#{{ form_label(CvForm.photo) }}#}
-            {#{{ form_widget(CvForm.photo) }}#}
-            {#<div id="clear"></div>#}
-        {#</div>#}
-
-        {#<div>#}
-            {#{{ form_rest(CvForm) }}#}
-        {#</div>#}
-
-        {#<div>#}
-            {#<input type="submit" value="upload photo">#}
-        {#</div>#}
-    {#</fieldset>#}
-{#</form>#}
-
-
 {{ form_errors(CvForm) }}
 {{ form_start(CvForm, {'action': path('artel_cv', {'id': developer.id}), 'method': 'POST'}) }}
 
@@ -44,6 +18,3 @@
 </div>
 
 {{ form_end(CvForm) }}
-
-
-

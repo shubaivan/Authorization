@@ -9,15 +9,15 @@ class DeveloperType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('firstname', null, array('label' => 'First Name', 'max_length' => 255, 'required' => false))
-			->add('lastname', null, array('label' => 'Last Name', 'max_length' => 255, 'required' => false))
-			->add('qualification', 'choice', array('label' => 'Speciality',
-				'choices' => array('Frontend' => 'Frontend', 'Backend' => 'Backend', 'Full stack' => 'Full stack'),'attr'=> array('class'=>'qualif'), 'required' => false))
+            ->add('firstname', null, array('label' => 'First Name', 'max_length' => 255, 'required' => false))
+            ->add('lastname', null, array('label' => 'Last Name', 'max_length' => 255, 'required' => false))
+            ->add('qualification', 'choice', array('label' => 'Speciality',
+                'choices' => array('Frontend' => 'Frontend', 'Backend' => 'Backend', 'Full stack' => 'Full stack'),'attr'=> array('class'=>'qualif'), 'required' => false))
             ->add('level', 'choice', array('label' => 'Professional Level', 'max_length' => 255,
                     'choices' => array('Junior' => 'Junior', 'Middle' => 'Middle', 'Senior' => 'Senior')))
 //			->add('main_skill', 'mainSkill', array('label' => 'Main Skill', 'required' => false, 'mapped' => true, 'attr' => array('placeholder' => 'Select your skills ...', 'class'=>'main_skill') ))

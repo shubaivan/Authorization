@@ -28,11 +28,10 @@ class Skill
      */
     private $skill;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -42,20 +41,20 @@ class Skill
     /**
      * Set skill
      *
-     * @param string $skill
+     * @param  string $skill
      * @return Skills
      */
     public function setSkill($skill)
     {
         $this->skill = $skill;
-    
+
         return $this;
     }
 
     /**
      * Get skill
      *
-     * @return string 
+     * @return string
      */
     public function getSkill()
     {

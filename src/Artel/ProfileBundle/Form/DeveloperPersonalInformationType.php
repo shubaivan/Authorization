@@ -9,16 +9,16 @@ class DeveloperPersonalInformationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('firstname', null, array('label' => 'First Name', 'max_length' => 255, 'required' => false))
-			->add('lastname', null, array('label' => 'Last Name', 'max_length' => 255, 'required' => false))
+            ->add('firstname', null, array('label' => 'First Name', 'max_length' => 255, 'required' => false))
+            ->add('lastname', null, array('label' => 'Last Name', 'max_length' => 255, 'required' => false))
             ->add('email', null, array('label' => 'Email', 'max_length' => 255, 'required' => false))
             ->add('country', 'choice', array('label' => 'Country', 'max_length' => 255, 'required' => false,
-				'choices'   => $this->getCountries()))
+                'choices'   => $this->getCountries()))
 //            ->add('company', null, array('label' => 'Company', 'max_length' => 255))
             ->add('skype', null, array('label' => 'Skype', 'max_length' => 255, 'required' => false))
             ->add('telephone', null, array('label' => 'Phone', 'max_length' => 255, 'required' => false, 'attr' => array('data-inputmask' => "'alias': 'date'")))
@@ -44,7 +44,7 @@ class DeveloperPersonalInformationType extends AbstractType
         return 'developer_personal_information';
     }
 
-    private  function getCountries()
+    private function getCountries()
     {
         return array(
             "AF" => "Afghanistan",

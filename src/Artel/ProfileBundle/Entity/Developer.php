@@ -35,12 +35,12 @@ class Developer extends CustomUser
      */
     private $level;
 
-	/**
+    /**
 	 * @var string
 	 *
 	 * @ORM\Column(name="main_skill", type="string", length=80, nullable=true)
 	 */
-	private $main_skill;
+    private $main_skill;
 
     /**
      * @var string
@@ -146,7 +146,6 @@ class Developer extends CustomUser
      */
     private $certificates = array();
 
-
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
@@ -183,7 +182,7 @@ class Developer extends CustomUser
         $this->numVotes = $numVotes;
     }
 
-    public function addVotes( $vote)
+    public function addVotes($vote)
     {
         $this->votes->add($vote);
 
@@ -212,6 +211,7 @@ class Developer extends CustomUser
     public function removeFeedback($feedback)
     {
         $this->feedback->remove($feedback);
+
         return $this;
     }
 
@@ -253,7 +253,7 @@ class Developer extends CustomUser
     }
 
     /**
-     * @param string $qualification
+     * @param  string     $qualification
      * @return Developers
      */
     public function setQualification($qualification)
@@ -271,24 +271,23 @@ class Developer extends CustomUser
         return $this->qualification;
     }
 
-
     /**
      * Set level
      *
-     * @param string $level
+     * @param  string     $level
      * @return Developers
      */
     public function setLevel($level)
     {
         $this->level = $level;
-    
+
         return $this;
     }
 
     /**
      * Get level
      *
-     * @return string 
+     * @return string
      */
     public function getLevel()
     {
@@ -298,13 +297,13 @@ class Developer extends CustomUser
     /**
      * Set skills
      *
-     * @param array $skills
+     * @param  array      $skills
      * @return Developers
      */
     public function setSkills($skills)
     {
         $this->skills = $skills;
-    
+
         return $this;
     }
 
@@ -321,20 +320,20 @@ class Developer extends CustomUser
     /**
      * Set english
      *
-     * @param string $english
+     * @param  string     $english
      * @return Developers
      */
     public function setEnglish($english)
     {
         $this->english = $english;
-    
+
         return $this;
     }
 
     /**
      * Get english
      *
-     * @return string 
+     * @return string
      */
     public function getEnglish()
     {
@@ -344,20 +343,20 @@ class Developer extends CustomUser
     /**
      * Set rate
      *
-     * @param integer $rate
+     * @param  integer    $rate
      * @return Developers
      */
     public function setRate($rate)
     {
         $this->rate = $rate;
-    
+
         return $this;
     }
 
     /**
      * Get rate
      *
-     * @return integer 
+     * @return integer
      */
     public function getRate()
     {
@@ -367,20 +366,20 @@ class Developer extends CustomUser
     /**
      * Set location
      *
-     * @param string $location
+     * @param  string     $location
      * @return Developers
      */
     public function setLocation($location)
     {
         $this->location = $location;
-    
+
         return $this;
     }
 
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -390,20 +389,20 @@ class Developer extends CustomUser
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string     $type
      * @return Developers
      */
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -486,6 +485,7 @@ class Developer extends CustomUser
     public function removeEducations($educations)
     {
         $this->educations->remove($educations);
+
         return $this;
     }
 
@@ -504,6 +504,7 @@ class Developer extends CustomUser
     public function removeEducation($educations)
     {
         $this->educations->remove($educations);
+
         return $this;
     }
 

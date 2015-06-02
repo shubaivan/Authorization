@@ -111,7 +111,7 @@ class PhotoUploader
             'ods'  => 'application/vnd.oasis.opendocument.spreadsheet',
         );
 
-        if (array_key_exists($extension, $mimeTypes)){
+        if (array_key_exists($extension, $mimeTypes)) {
             return $mimeTypes[$extension];
         } else {
             return 'application/octet-stream';

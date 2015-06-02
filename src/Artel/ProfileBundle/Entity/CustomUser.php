@@ -110,7 +110,6 @@ class CustomUser implements UserInterface
      */
     protected $created;
 
-
     /**
      * @var string $image
      *
@@ -148,7 +147,7 @@ class CustomUser implements UserInterface
     /**
      * Set username
      *
-     * @param string $username
+     * @param  string $username
      * @return Users
      */
     public function setUsername($username)
@@ -168,7 +167,7 @@ class CustomUser implements UserInterface
     }
 
     /**
-     * @param string $username
+     * @param  string $username
      * @return Users
      */
     public function setName($name)
@@ -198,7 +197,7 @@ class CustomUser implements UserInterface
     /**
      * Set password
      *
-     * @param string $password
+     * @param  string $password
      * @return Users
      */
     public function setPassword($password)
@@ -220,7 +219,7 @@ class CustomUser implements UserInterface
     /**
      * Set roles
      *
-     * @param string $roles
+     * @param  string $roles
      * @return Users
      */
     public function setRole($roles)
@@ -241,7 +240,7 @@ class CustomUser implements UserInterface
     /**
      * Set roles
      *
-     * @param string $roles
+     * @param  string $roles
      * @return Users
      */
     public function setRoles($roles)
@@ -272,7 +271,6 @@ class CustomUser implements UserInterface
 
         return $this;
     }
-
 
     /**
      * @inheritDoc
@@ -343,7 +341,7 @@ class CustomUser implements UserInterface
     /**
      * Set company
      *
-     * @param string $company
+     * @param  string $company
      * @return Users
      */
     public function setCompany($company)
@@ -434,7 +432,7 @@ class CustomUser implements UserInterface
     /**
      * Set isOutsource
      *
-     * @param boolean $isOutsource
+     * @param  boolean $isOutsource
      * @return Users
      */
     public function setIsOutSource($isOutsource)

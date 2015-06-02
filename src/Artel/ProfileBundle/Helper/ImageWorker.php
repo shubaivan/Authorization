@@ -3,16 +3,15 @@ namespace Artel\ProfileBundle\Helper;
 
 class ImageWorker
 {
-    var $image;
-    var $image_type;
+    public $image;
+    public $image_type;
 
-    function load($filename) {
-
+    public function load($filename)
+    {
         $image_info = getimagesize($filename);
         $this->image_type = $image_info[2];
 
-        switch($this->image_type)
-        {
+        switch ($this->image_type) {
             case IMAGETYPE_JPEG: $this->image = imagecreatefromjpeg($filename); break;
             case IMAGETYPE_GIF: $this->image = imagecreatefromgif($filename); break;
             case IMAGETYPE_PNG: $this->image = imagecreatefrompng($filename); break;
@@ -22,7 +21,7 @@ class ImageWorker
         }
     }
 
-    function transparentToColor($thumb)
+    public function transparentToColor($thumb)
     {
         $im = imagecreatetruecolor($this->getWidth(), $this->getHeight());
         $color = imagecolorallocate($im, 255, 255, 255);
@@ -30,67 +29,70 @@ class ImageWorker
         imagecopy($thumb, $im, 0, 0, 0, 0, imagesx($im), imagesy($im));
     }
 
-    function save($filename, $image_type=IMAGETYPE_JPEG, $compression=95, $permissions=null)
+    public function save($filename, $image_type=IMAGETYPE_JPEG, $compression=95, $permissions=null)
     {
-        if( $image_type == IMAGETYPE_JPEG ) {
+        if ($image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image, $filename,$compression);
-        } elseif( $image_type == IMAGETYPE_GIF ) {
+        } elseif ($image_type == IMAGETYPE_GIF) {
             imagegif($this->image,$filename);
-        } elseif( $image_type == IMAGETYPE_PNG ) {
+        } elseif ($image_type == IMAGETYPE_PNG) {
             imagepng($this->image,$filename);
         }
-        if( $permissions != null) {
+        if ($permissions != null) {
 
             chmod($filename,$permissions);
         }
     }
-    function output($image_type=IMAGETYPE_JPEG) {
-
-        if( $image_type == IMAGETYPE_JPEG ) {
+    public function output($image_type=IMAGETYPE_JPEG)
+    {
+        if ($image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image);
-        } elseif( $image_type == IMAGETYPE_GIF ) {
+        } elseif ($image_type == IMAGETYPE_GIF) {
 
             imagegif($this->image);
-        } elseif( $image_type == IMAGETYPE_PNG ) {
+        } elseif ($image_type == IMAGETYPE_PNG) {
 
             imagepng($this->image);
         }
     }
-    function getWidth() {
-
+    public function getWidth()
+    {
         return imagesx($this->image);
     }
-    function getHeight() {
-
+    public function getHeight()
+    {
         return imagesy($this->image);
     }
-    function resizeToHeight($height) {
-
+    public function resizeToHeight($height)
+    {
         $ratio = $height / $this->getHeight();
         $width = $this->getWidth() * $ratio;
         $this->resize($width,$height);
     }
 
-    function resizeToWidth($width) {
+    public function resizeToWidth($width)
+    {
         $ratio = $width / $this->getWidth();
         $height = $this->getheight() * $ratio;
         $this->resize($width,$height);
     }
 
-    function scale($scale) {
+    public function scale($scale)
+    {
         $width = $this->getWidth() * $scale/100;
         $height = $this->getheight() * $scale/100;
         $this->resize($width,$height);
     }
 
-    function cropMiddle($thumb_width, $thumb_height) {
+    public function cropMiddle($thumb_width, $thumb_height)
+    {
         $width = $this->getWidth();
         $height = $this->getHeight();
 
         $original_aspect = $width / $height;
         $thumb_aspect = $thumb_width / $thumb_height;
 
-        if ( $original_aspect >= $thumb_aspect ) {
+        if ($original_aspect >= $thumb_aspect) {
             // If image is wider than thumbnail (in aspect ratio sense)
             $new_height = $thumb_height;
             $new_width = $width / ($height / $thumb_height);
@@ -114,7 +116,8 @@ class ImageWorker
         $this->image = $thumb;
     }
 
-    function resize($width,$height,$left=0,$top=0) {
+    public function resize($width,$height,$left=0,$top=0)
+    {
         $new_image = imagecreatetruecolor($width, $height);
         imagecopyresampled($new_image, $this->image, 0, 0, $left, $top, $width, $height, $this->getWidth(), $this->getHeight());
         $this->image = $new_image;
@@ -124,13 +127,12 @@ class ImageWorker
     {
         $file    =    fopen($p_sFile,"rb");
         $read    =    fread($file,10);
-        while(!feof($file)&&($read<>""))
+        while(!feof($file)&&($read!=""))
             $read    .=    fread($file,1024);
         $temp    =    unpack("H*",$read);
         $hex    =    $temp[1];
         $header    =    substr($hex,0,108);
-        if (substr($header,0,4)=="424d")
-        {
+        if (substr($header,0,4)=="424d") {
             $header_parts    =    str_split($header,2);
             $width            =    hexdec($header_parts[19].$header_parts[18]);
             $height            =    hexdec($header_parts[23].$header_parts[22]);
@@ -143,10 +145,8 @@ class ImageWorker
         $body_size        =    (strlen($body)/2);
         $header_size    =    ($width*$height);
         $usePadding        =    ($body_size>($header_size*3)+4);
-        for ($i=0;$i<$body_size;$i+=3)
-        {
-            if ($x>=$width)
-            {
+        for ($i=0;$i<$body_size;$i+=3) {
+            if ($x>=$width) {
                 if ($usePadding)
                     $i    +=    $width%4;
                 $x    =    0;
@@ -163,6 +163,7 @@ class ImageWorker
             $x++;
         }
         unset($body);
+
         return $image;
     }
 }

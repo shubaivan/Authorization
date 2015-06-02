@@ -42,12 +42,14 @@ class FileUploader
             "Ї"=>"I","І"=>"I","Ґ"=>"G","Є"=>"YE",
             ' '=>'_', '—'=>'-', '+'=>'_'
         );
+
         return strtr($text, $trans_arr);
     }
 
-    function validFile($file)
+    public function validFile($file)
     {
         if($file->getClientSize() > $this::MB5)
+
             return array(0, 'You select a file that exceeds the size limit.');
         else
             return array(1, $file->getMimeType());
@@ -64,6 +66,7 @@ class FileUploader
         $path_name = $path.$name;
 
         if($file->move($path, $name))
+
             return array('type' => $type, 'url' => $path_name);
         else
            return false;
@@ -72,8 +75,7 @@ class FileUploader
     public function uploadImage($file)
     {
         $result = $this->validFile($file);
-        if(! $result[0]) {
-
+        if (! $result[0]) {
             return $result[1];
         }
 

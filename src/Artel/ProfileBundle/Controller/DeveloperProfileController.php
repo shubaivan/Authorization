@@ -4,9 +4,8 @@ namespace Artel\ProfileBundle\Controller;
 
 use Artel\ProfileBundle\Form\DeveloperPersonalInformationType;
 use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
-use Artel\ProfileBundle\Form\DeveloperType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Artel\ProfileBundle\Form\Type\AddPhotoType;
+use Artel\ProfileBundle\Form\DeveloperCvType;
 use Symfony\Component\HttpFoundation\Request;
 
 class DeveloperProfileController extends Controller
@@ -30,9 +29,7 @@ class DeveloperProfileController extends Controller
         $form = $this->createForm($formType, $developer);
         $professionalSkillsForm = $form->createView();
 
-
-        $form = $this->createForm(new AddPhotoType());
-
+        $form = $this->createForm(new DeveloperCvType());
 
         return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig',array(
             'developer' => $developer,
@@ -107,7 +104,7 @@ class DeveloperProfileController extends Controller
         }
 
         $img = $developer->getImage();
-        if($img && file_exists($img)) {
+        if ($img && file_exists($img)) {
             unlink($img);
         }
 
@@ -128,8 +125,7 @@ class DeveloperProfileController extends Controller
         $request = $this->get('request');
         $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
 
-        $form = $this->createForm(new AddPhotoType(), array());
-
+        $form = $this->createForm(new DeveloperCvType(), array());
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
