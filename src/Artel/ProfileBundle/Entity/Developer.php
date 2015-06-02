@@ -146,6 +146,7 @@ class Developer extends CustomUser
      */
     private $certificates = array();
 
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');

@@ -29,6 +29,11 @@ artel_profile_photo_upload:
     defaults: { _controller: ArtelProfileBundle:DeveloperProfile:photoUpload }
     requirements: { _method: post }
 
+artel_cv:
+    path:     /profile/{id}/cv_upload
+    defaults: { _controller: ArtelProfileBundle:DeveloperProfile:add}
+    requirements: { _method: post }
+
 ld:
     pattern: /ld
     defaults:

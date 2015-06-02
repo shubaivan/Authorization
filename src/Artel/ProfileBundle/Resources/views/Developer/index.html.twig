@@ -167,39 +167,33 @@
                                                 <div class="caption caption-md margin-bottom-15">
                                                     <span class="caption-subject font-green bold uppercase">Upload your CV here</span>
                                                 </div>
-												<form action="#" role="form">
-                                                    <div class="form-group">
-                                                        <div class="fileinput-new" data-provides="fileinput">
-                                                            <div class="input-group input-large">
-                                                                <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
-                                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp; <span class="fileinput-filename">
-                                                                    </span>
-                                                                </div>
-                                                                <span class="input-group-addon btn default btn-file">
-                                                                <span class="fileinput-new">
-                                                                Select file </span>
-                                                                <span class="fileinput-exists">
-                                                                Change </span>
-                                                                <input name="..." type="file">
-                                                                </span>
-                                                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput">
-                                                                    Remove </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-													<div class="form-group margin-top-20">
-														<div class="clearfix">
-															<span class="label label-info margin-right-10">NOTE!</span>
-															<span>Information about uploading</span>
-														</div>
-													</div>
-													<div class="margin-top-20">
-														<a href="javascript:;" class="btn green-haze">
-														Submit </a>
-														<a href="javascript:;" class="btn default">
-														Cancel </a>
-													</div>
-												</form>
+                                                {% include 'ArtelProfileBundle:Developer:add.html.twig' %}
+                                                {#<form role="form" enctype="multipart/form-data" novalidate method="POST" id="create_post">#}
+                                                    {#<fieldset>#}
+                                                        {#<legend>Created Photo</legend>#}
+                                                        {#<div>#}
+                                                            {#{{ form_label(form.title) }}#}
+                                                            {#{{ form_widget(form.title) }}#}
+                                                            {#<div id="clear"></div>#}
+                                                        {#</div>#}
+
+                                                        {#<div>#}
+                                                            {#{{ form_label(form.photo) }}#}
+                                                            {#{{ form_widget(form.photo) }}#}
+                                                            {#<div id="clear"></div>#}
+                                                        {#</div>#}
+
+                                                        {#<div>#}
+                                                            {#{{ form_rest(form) }}#}
+                                                        {#</div>#}
+
+
+
+                                                        {#<div>#}
+                                                            {#<input type="submit" value="upload photo">#}
+                                                        {#</div>#}
+                                                    {#</fieldset>#}
+                                                {#</form>#}
 											</div>
 											<!-- END CHANGE AVATAR TAB -->
 											<!-- CHANGE PASSWORD TAB -->

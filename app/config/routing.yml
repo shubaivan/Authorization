@@ -6,8 +6,6 @@ artel_profile:
     resource: "@ArtelProfileBundle/Resources/config/routing.yml"
     prefix:   /
 
-
-
 user_routing:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix: /

@@ -6,6 +6,8 @@ use Artel\ProfileBundle\Form\DeveloperPersonalInformationType;
 use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
 use Artel\ProfileBundle\Form\DeveloperType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Artel\ProfileBundle\Form\Type\AddPhotoType;
+use Symfony\Component\HttpFoundation\Request;
 
 class DeveloperProfileController extends Controller
 {
@@ -28,10 +30,15 @@ class DeveloperProfileController extends Controller
         $form = $this->createForm($formType, $developer);
         $professionalSkillsForm = $form->createView();
 
+
+        $form = $this->createForm(new AddPhotoType());
+
+
         return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig',array(
             'developer' => $developer,
             'infoForm' => $personalInformationForm,
-            'skillsForm' => $professionalSkillsForm
+            'skillsForm' => $professionalSkillsForm,
+            "CvForm" => $form->createView(),
         ));
     }
 
@@ -113,5 +120,48 @@ class DeveloperProfileController extends Controller
         $em->flush();
 
         return new Response('/'.$path['url']);
+    }
+
+    public function addAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+
+        $form = $this->createForm(new AddPhotoType(), array());
+
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $url = sprintf(
+                    '%s%s',
+                    $this->container->getParameter('acme_storage.amazon_s3.base_url'),
+                    $this->getPhotoUploader()->uploadFromUrl($data['photo'])
+                );
+
+                dump($url);
+
+                $developer->setCvUri($url);
+                $em->persist($developer);
+                $em->flush();
+
+//                return $this->redirect($this->get('router')->generate('artel_profile_homepage'));
+                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
+            }
+        }
+
+        return array(
+            "form" => $form->createView(),
+        );
+    }
+
+    /**
+     * @return \StorageBundle\Upload\PhotoUploader
+     */
+    protected function getPhotoUploader()
+    {
+        return $this->get('acme_storage.photo_uploader');
     }
 }
