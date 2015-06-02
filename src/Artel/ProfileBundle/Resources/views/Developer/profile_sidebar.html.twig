@@ -4,7 +4,7 @@
     <div class="portlet light profile-sidebar-portlet">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-            <img src="{{ asset('bundles/artelprofile/img/profile/profile_user.jpg') }}" class="img-responsive" alt="">
+            <img src="{{ developer.avatar }}" class="img-responsive" alt=""/>
         </div>
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
@@ -33,7 +33,7 @@
         <div class="row list-separated profile-stat">
             <div class="col-md-4 col-sm-4 col-xs-6">
                 <div class="uppercase profile-stat-title">
-                    37
+                    {{ developer.rate }}
                 </div>
                 <div class="uppercase profile-stat-text">
                     Rate

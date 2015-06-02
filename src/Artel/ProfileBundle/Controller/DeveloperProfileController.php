@@ -2,6 +2,7 @@
 
 namespace Artel\ProfileBundle\Controller;
 
+use Artel\ProfileBundle\Form\DeveloperAvatarType;
 use Artel\ProfileBundle\Form\DeveloperPersonalInformationType;
 use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,9 +19,6 @@ class DeveloperProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
         $developer = $em->getRepository('UserBundle:User')->findOneById($id);
-
-//        $profileRepository = $this->get('artel.profile.developer.repository');
-//        $developer = $profileRepository->findOneById($id);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -75,7 +73,7 @@ class DeveloperProfileController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -102,33 +100,45 @@ class DeveloperProfileController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
         }
 
-        $img = $developer->getImage();
-        if ($img && file_exists($img)) {
-            unlink($img);
+        $form = $this->createForm(new DeveloperAvatarType(), array());
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $url = sprintf(
+                    '%s%s',
+                    $this->container->getParameter('acme_storage.amazon_s3.base_url'),
+                    $this->getPhotoUploader()->upload($data['photo'])
+                );
+
+                dump($url);
+
+                $developer->setAvatar($url);
+                $em->persist($developer);
+                $em->flush();
+
+//                return $this->redirect($this->get('router')->generate('artel_profile_homepage'));
+                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
+            }
         }
+            return array(
+                "form" => $form->createView(),
+            );
 
-        $uploader = $this->get('artel.profile.file_uploader');
-        $path = $uploader->uploadImage($request->files->get('file'));
-
-        $developer->setImage($path['url']);
-
-//        $em->persist($developer);
-        $em->flush();
-
-        return new Response('/'.$path['url']);
     }
 
     public function addAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('ArtelProfileBundle:Developer')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
         $form = $this->createForm(new DeveloperCvType(), array());
 

@@ -31,7 +31,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      */
-    protected $avatar;
+    public  $avatar;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -132,6 +132,13 @@ class User extends BaseUser
      * @ORM\Column(name="rate", type="smallint", nullable=true)
      */
     private $rate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cv_uri", type="string", length=255, nullable=true)
+     */
+    private $cvUri;
 
     public function isFakeEmail()
     {
@@ -599,5 +606,29 @@ class User extends BaseUser
     public function getRate()
     {
         return $this->rate;
+    }
+
+    /**
+     * Set cvUri
+     *
+     * @param string $cvUri
+     *
+     * @return User
+     */
+    public function setCvUri($cvUri)
+    {
+        $this->cvUri = $cvUri;
+
+        return $this;
+    }
+
+    /**
+     * Get cvUri
+     *
+     * @return string
+     */
+    public function getCvUri()
+    {
+        return $this->cvUri;
     }
 }

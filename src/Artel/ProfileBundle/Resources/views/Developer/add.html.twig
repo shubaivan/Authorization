@@ -2,11 +2,6 @@
 {{ form_start(CvForm, {'action': path('artel_cv', {'id': developer.id}), 'method': 'POST'}) }}
 
 <div class="form-group">
-    {{ form_label(CvForm.title) }}
-    {{ form_widget(CvForm.title) }}
-</div>
-
-<div class="form-group">
 
     {{ form_label(CvForm.photo) }}
     {{ form_widget(CvForm.photo) }}
