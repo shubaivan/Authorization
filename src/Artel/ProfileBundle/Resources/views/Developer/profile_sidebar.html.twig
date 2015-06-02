@@ -80,34 +80,6 @@
                         <i class="icon-info"></i>
                         Blog </a>
                 </li>
-
-                {% if app.user %}
-                    <li>
-                        <img src="{{ app.user.avatar }}" />
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('user_update_profile') }}">User profile</a>
-                    </li>
-
-                {% else %}
-                    {#<li>#}
-                    {#<a class="logo" href="{{ path('hwi_oauth_service_redirect', {'service' : 'vkontakte'}) }}">Вк</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                    {#<a class="logo" href="{{ path('hwi_oauth_service_redirect', {'service' : 'facebook'}) }}">Fa</a>#}
-                    {#</li>#}
-
-                    <li>
-                        <a class="logo" href="{{ path('hwi_oauth_service_redirect', {'service' : 'linkedin'}) }}">Ld</a>
-                    </li>
-                {% endif %}
             </ul>
         </div>
         <!-- END MENU -->

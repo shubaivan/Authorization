@@ -111,9 +111,8 @@ class CustomUser implements UserInterface
     protected $created;
 
     /**
-     * @var string $image
-     *
-     * @ORM\Column(name="image_path", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image_path")
+     * @Assert\File( maxSize="20M")
      */
     protected $image;
 

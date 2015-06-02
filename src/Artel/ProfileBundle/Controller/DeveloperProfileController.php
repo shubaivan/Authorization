@@ -107,7 +107,7 @@ class DeveloperProfileController extends Controller
         if ($img && file_exists($img)) {
             unlink($img);
         }
-
+        
         $uploader = $this->get('artel.profile.file_uploader');
         $path = $uploader->uploadImage($request->files->get('file'));
 

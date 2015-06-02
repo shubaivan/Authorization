@@ -16,10 +16,24 @@ class LinkedinProvider
      */
     public function setUserData(User $user, UserResponseInterface $response)
     {
-        $username = $response->getRealName();
+        $arrResponse = $response->getResponse();
 
-//        $responseArray = $response->getResponse();
-        dump($response);
+        $userFirstName = strstr($response->getRealName(), ' ', true);
+        $userLastName = str_replace(' ', '', strstr($response->getRealName(), ' '));
+        // Prepare new User object before adding to database
+//        var_dump($arrResponse);
+        $user
+            ->setEnabled(true)
+            ->setUsername($userFirstName)
+            ->setFirstName($userFirstName)
+            ->setLastName($userLastName)
+            ->setEmail($response->getEmail())
+
+            ->setPassword(md5($response->getAccessToken()))
+            ->setAvatar($response->getProfilePicture())
+            ->setRoles(array('ROLE_USER'));
+
+//        dump($user);
 
         return $user;
     }

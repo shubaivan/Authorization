@@ -18,10 +18,10 @@ class UserController extends Controller
     public function updateContactsAction(Request $request)
     {
         $userAuth = $this->getUser();
-//        var_dump($userAuth);
+//        dump($userAuth);exit;
 
         if (!$userAuth) {
-            return $this->redirect($this->generateUrl('index'));
+            return $this->redirect($this->generateUrl('homepage'));
         }
 
         $em = $this->get('doctrine.orm.entity_manager');
@@ -38,7 +38,7 @@ class UserController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            $router = $this->generateUrl("index");
+            $router = $this->generateUrl("homepage");
 
             return $this->redirect(
                 $router

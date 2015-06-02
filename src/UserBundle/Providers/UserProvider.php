@@ -12,6 +12,8 @@ class UserProvider extends BaseClass
 
     private $facebookProvider;
 
+    private $linkedinProvider;
+
     /**
      * {@inheritDoc}
      */
