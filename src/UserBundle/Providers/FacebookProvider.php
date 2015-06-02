@@ -29,7 +29,6 @@ class FacebookProvider
             ->setLastName($userLastName)
             ->setEmail($userFirstName)
 
-
             ->setPassword(md5($response->getAccessToken()))
             ->setAvatar('http://graph.facebook.com/' . $response->getUsername() . '/picture?width=250&height=250')
             ->setRoles(array('ROLE_USER'));

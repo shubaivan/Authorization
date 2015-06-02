@@ -51,11 +51,10 @@ class Photo
      */
     protected $author;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,7 +64,7 @@ class Photo
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Photo
      */
     public function setTitle($title)
@@ -78,7 +77,7 @@ class Photo
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -88,7 +87,7 @@ class Photo
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Photo
      */
     public function setCreatedAt($createdAt)
@@ -101,7 +100,7 @@ class Photo
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -111,7 +110,7 @@ class Photo
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param  string $photo
      * @return Photo
      */
     public function setPhoto($photo)
@@ -124,7 +123,7 @@ class Photo
     /**
      * Get photo
      *
-     * @return string 
+     * @return string
      */
     public function getPhoto()
     {
@@ -134,7 +133,7 @@ class Photo
     /**
      * Set text
      *
-     * @param string $text
+     * @param  string $text
      * @return Photo
      */
     public function setText($text)
@@ -147,7 +146,7 @@ class Photo
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -157,7 +156,7 @@ class Photo
     /**
      * Set author
      *
-     * @param \UserBundle\Entity\User $author
+     * @param  \UserBundle\Entity\User $author
      * @return Photo
      */
     public function setAuthor(\UserBundle\Entity\User $author = null)
@@ -171,7 +170,7 @@ class Photo
     /**
      * Get author
      *
-     * @return \UserBundle\Entity\User 
+     * @return \UserBundle\Entity\User
      */
     public function getAuthor()
     {

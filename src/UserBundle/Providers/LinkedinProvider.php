@@ -34,7 +34,6 @@ class LinkedinProvider
             ->setRoles(array('ROLE_USER'));
 
 //        dump($user);
-
         return $user;
     }
 }

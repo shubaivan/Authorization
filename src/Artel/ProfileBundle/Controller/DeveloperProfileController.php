@@ -128,6 +128,7 @@ class DeveloperProfileController extends Controller
                 return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
             }
         }
+
             return array(
                 "form" => $form->createView(),
             );

@@ -47,7 +47,6 @@ class PhotoController extends Controller
 
         $form = $this->createForm(new AddPhotoType(), array());
 
-
         if ($request->isMethod('POST')) {
             $form->bind($request);
             if ($form->isValid()) {
