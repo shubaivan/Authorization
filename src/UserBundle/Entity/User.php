@@ -140,6 +140,11 @@ class User extends BaseUser
      */
     private $cvUri;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Photo", inversedBy="author")
+     */
+    protected $photo;
+
     public function isFakeEmail()
     {
         return false === strpos($this->email, '@example.com') && $this->email ? false : true;
@@ -630,5 +635,39 @@ class User extends BaseUser
     public function getCvUri()
     {
         return $this->cvUri;
+    }
+
+    /**
+     * Add photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     *
+     * @return User
+     */
+    public function addPhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photo[] = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Remove photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     */
+    public function removePhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photo->removeElement($photo);
+    }
+
+    /**
+     * Get photo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }
