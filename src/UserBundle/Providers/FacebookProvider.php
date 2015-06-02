@@ -16,16 +16,23 @@ class FacebookProvider
      */
     public function setUserData(User $user, UserResponseInterface $response)
     {
-        $username = $response->getUsername();
-        $responseArray = $response->getResponse();
+        $arrResponse = $response->getResponse();
 
-        $user->setFirstName($responseArray['first_name']);
-        $user->setLastName($responseArray['last_name']);
-        $user->setEmail('id'.$user->getFacebookId().'@example.com');
-        $user->setUsername($username);
-        $user->setPassword($username);
-        $user->setEnabled(true);
-        $user->setAvatar('http://graph.facebook.com/'.$username.'/picture?width=200&height=200');
+        $userFirstName = strstr($response->getRealName(), ' ', true);
+        $userLastName = str_replace(' ', '', strstr($response->getRealName(), ' '));
+        // Prepare new User object before adding to database
+
+        $user
+            ->setEnabled(true)
+            ->setUsername($userFirstName)
+            ->setFirstName($userFirstName)
+            ->setLastName($userLastName)
+            ->setEmail($userFirstName)
+
+
+            ->setPassword(md5($response->getAccessToken()))
+            ->setAvatar('http://graph.facebook.com/' . $response->getUsername() . '/picture?width=250&height=250')
+            ->setRoles(array('ROLE_USER'));
 
         return $user;
     }

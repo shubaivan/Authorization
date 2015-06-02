@@ -25,7 +25,7 @@ security:
                 csrf_provider: form.csrf_provider
             oauth:
                 resource_owners:
-#                    facebook:           "/login/check-facebook"
+                    facebook:           "/login/check-facebook"
 #                    vkontakte:             "/login/check-vkontakte"
                     linkedin:             "/auth/linkedin"
                 login_path:        /login

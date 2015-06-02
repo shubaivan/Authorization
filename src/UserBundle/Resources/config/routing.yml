@@ -34,9 +34,9 @@ hwi_oauth_redirect:
   prefix:   /login
 
 
-#facebook_check:
-#  pattern: /login/check-facebook
-#
+facebook_check:
+  pattern: /login/check-facebook
+
 #vkontakte_check:
 #  pattern: /login/check-vkontakte
 

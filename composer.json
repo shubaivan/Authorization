@@ -87,6 +87,8 @@
                 "database_name": "DATABASE_NAME",
                 "database_user": "DATABASE_USER",
                 "database_password": "DATABASE_PASSWORD",
+                "facebook_app_id": "FACEBOOK_APP_ID",
+                "facebook_app_secret": "FACEBOOK_APP_SECRET",
                 "linkedin_app_id": "LINKEDIN_APP_ID",
                 "linkedin_app_secret": "LINKEDIN_APP_SECRET",
                 "amazon_s3_bucket_name": "AMAZON_S3_BUCKET_NAME",

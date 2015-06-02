@@ -23,6 +23,7 @@ parameters:
     amazon_aws_key: ~
     amazon_aws_secret_key: ~
     amazon_s3_base_url: ~
-
+    facebook_app_id: ~
+    facebook_app_secret: ~
     linkedin_app_id: ~
     linkedin_app_secret: ~

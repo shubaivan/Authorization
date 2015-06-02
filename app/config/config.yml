@@ -95,15 +95,15 @@ hwi_oauth:
         username_iterations: 30
         properties:
             # these properties will be used/redefined later in the custom FOSUBUserProvider service.
-#            facebook: facebookId
+            facebook: facebookId
 #            vkontakte: vkontakteId
             linkedin: linkedinId
     resource_owners:
-#        facebook:
-#            type:                facebook
-#            client_id:           "%facebook_app_id%"
-#            client_secret:       "%facebook_app_secret%"
-#            scope:               "user_photos"
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
+            scope:               "user_photos"
 #        vkontakte:
 #            type:                vkontakte
 #            client_id:           "%vkontakte_app_id%"

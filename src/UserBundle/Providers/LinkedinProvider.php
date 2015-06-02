@@ -8,7 +8,7 @@ use UserBundle\Entity\User;
 class LinkedinProvider
 {
     /**
-     * setUserData - This method use Facebook GraphAPI for get and set User data
+     * setUserData - This method use Linkedin GraphAPI for get and set User data
      *
      * @param  User                  $user
      * @param  UserResponseInterface $response
