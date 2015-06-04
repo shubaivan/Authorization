@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
+            new Khepin\YamlFixturesBundle\KhepinYamlFixturesBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

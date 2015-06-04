@@ -72,10 +72,6 @@ class LoadSkillsData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($skill12);
         $manager->persist($skill13);
         $manager->persist($skill14);
-//        $manager->persist($doctrine);
-//        $manager->persist($extension);
-//        $manager->persist($template);
-//        $manager->persist($twig);
 
         $manager->flush();
     }
