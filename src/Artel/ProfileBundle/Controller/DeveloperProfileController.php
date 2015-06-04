@@ -8,6 +8,7 @@ use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Artel\ProfileBundle\Form\DeveloperCvType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 
 class DeveloperProfileController extends Controller
@@ -102,37 +103,18 @@ class DeveloperProfileController extends Controller
         $request = $this->get('request');
         $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
-        if (! $developer) {
-            throw $this->createNotFoundException('Unable to find a profile.');
-        }
+        $url = sprintf(
+            '%s%s',
+            $this->container->getParameter('acme_storage.amazon_s3.base_url'),
+            $this->getPhotoUploader()->upload($request->files->get('file'))
+        );
+//        dump($url);exit;
+        $developer->setAvatar($url);
+        $em->persist($developer);
 
-        $form = $this->createForm(new DeveloperAvatarType(), array());
+        $em->flush();
 
-        if ($request->isMethod('POST')) {
-            $form->bind($request);
-            if ($form->isValid()) {
-                $data = $form->getData();
-                $url = sprintf(
-                    '%s%s',
-                    $this->container->getParameter('acme_storage.amazon_s3.base_url'),
-                    $this->getPhotoUploader()->upload($data['photo'])
-                );
-
-                dump($url);
-
-                $developer->setAvatar($url);
-                $em->persist($developer);
-                $em->flush();
-
-//                return $this->redirect($this->get('router')->generate('artel_profile_homepage'));
-                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
-            }
-        }
-
-            return array(
-                "form" => $form->createView(),
-            );
-
+        return new Response($url);
     }
 
     public function addAction($id)
