@@ -1,0 +1,93 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {{ photo.title }}
+{% endblock %}
+
+{% block styles %}
+    <link href="{{ asset('bundles/app/style/post/fullpost.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <div class="webber-article">
+        {#<div class="control-block">#}
+            {#<a href="{{ path('edit_post', {'slug':post.getSlugPost }) }}">Редактировать</a>#}
+            {#<a href="{{ path('delete_post', {'slug':post.getSlugPost }) }}" id="delete_post">Удалить</a>#}
+        {#</div>#}
+
+        <div class="title">
+            <a href="{{ path('view_photo', { 'slug':photo.getSlug }) }}">{{ photo.title }}</a>
+        </div>
+        <div class="info-block">
+            <p>
+                Дата создания: <b>{{ photo.createdAt|date("d.m.Y H:i:s") }}</b><br>
+                {#Дата обновления: <b>{{ photo.updatedAt|date("d.m.Y H:i:s") }}</b><br>#}
+                Созданно автором: <b>{{ photo.author }}</b><br>
+                Вопросы: <b>{{ photo.comment|length }}</b>
+            </p>
+        </div>
+        {#<div class="tag-block">#}
+            {#<p>#}
+                {#Теги:#}
+                {#{% for tag in post.tag %}#}
+                    {#<a href="{{ path('tag_page', {'slug': tag.hashSlug }) }}">{{ tag.hashTag|hashTag }}</a>#}
+                {#{% endfor %}#}
+            {#</p>#}
+
+        {#</div>#}
+        <div class="text">
+            <p>{{ photo.text }}</p>
+        </div>
+        <div class="text">
+            <a href="{{ photo.photo }}" target="_blank"><img src="{{ photo.photo}}" {{ photo.photo > 150 ? 'height="150"':''}}/></a>
+        </div>
+    </div>
+    <div class="comment-article">
+        <h3>
+            Comments:
+        </h3>
+        <ul id="category_list">
+            {% for comment in photo.comment|reverse %}
+                <li>
+                    <div class="comment">
+                        <div class="info-block">
+                            <p>
+                                Добавил автор: <b>{{ comment.author }}</b></br>
+                                Дата создания: <b>{{ comment.createdAt|date("d.m.Y H:i:s") }}</b>
+                            </p>
+                        </div>
+
+                        <div class="text">
+                            <p>
+                                {{ comment.text }}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            {% else %}
+                <li>
+                    <h3>No comments</h3>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+        <div>
+            <h3>Create comment:</h3>
+            <form id="comment_add" role="form" action="{{ path("comment_add", {"slug" : photo.slug}) }}" method="POST">
+
+                <div class="text">
+                    {{ form_row(form.text) }}
+                    <div id="clear"></div>
+                </div>
+
+                {{ form_rest(form) }}
+
+                <div>
+                    <input type="submit" value="Add your comment">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

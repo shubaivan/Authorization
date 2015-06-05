@@ -7,6 +7,7 @@
  */
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\AddCommentType;
 use AppBundle\Form\Type\AddPhotoType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -86,6 +87,23 @@ class PhotoController extends Controller
         }
 
         return array(
+            "form" => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/photo/{slug}/", name="view_photo")
+     * @Method({"GET"})
+     * @Template()
+     */
+    public function viewAction($slug)
+    {
+        $photo = $this->getDoctrine()->getRepository('AppBundle:Photo')->findOneBy(['slug' => $slug]);
+
+        $form = $this->createForm(new AddCommentType());
+
+        return array(
+            "photo" => $photo,
             "form" => $form->createView(),
         );
     }

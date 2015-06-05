@@ -57,6 +57,12 @@ class Photo
     protected $comment;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=128, unique=true)
+     */
+    protected $slug;
+
+    /**
      * Get id
      *
      * @return integer
@@ -221,5 +227,29 @@ class Photo
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Photo
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

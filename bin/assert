@@ -1,0 +1,6 @@
+<?php
+
+require __DIR__ . '/base_script.php';
+
+show_run("assets", "app/console assets:install web --symlink");
+
