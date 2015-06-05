@@ -7,7 +7,40 @@ use Gaufrette\Filesystem;
 
 class PhotoUploader
 {
-    private static $allowedMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
+    private static $allowedMimeTypes = array(
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'application/pdf',
+        'image/vnd.adobe.photoshop',
+        'application/postscript',
+        'application/postscript',
+        'application/postscript',
+
+        // ms office
+        'application/msword',
+        'application/rtf',
+        'application/vnd.ms-excel',
+        'application/vnd.ms-powerpoint',
+        'application/msword',
+        'application/vnd.ms-excel',
+        'application/vnd.ms-powerpoint',
+        // open office
+        'application/vnd.oasis.opendocument.text',
+        'application/vnd.oasis.opendocument.spreadsheet',
+
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
+        'application/vnd.openxmlformats-officedocument.presentationml.template',
+        'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'application/vnd.openxmlformats-officedocument.presentationml.slide',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
+        'application/vnd.ms-excel.addin.macroEnabled.12',
+        'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
+
+    );
     private $filesystem;
 
     public function __construct(Filesystem $filesystem)

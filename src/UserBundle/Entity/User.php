@@ -145,6 +145,11 @@ class User extends BaseUser
      */
     protected $photo;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Comment", inversedBy="author")
+     */
+    protected $comment;
+
     public function isFakeEmail()
     {
         return false === strpos($this->email, '@example.com') && $this->email ? false : true;
@@ -669,5 +674,39 @@ class User extends BaseUser
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

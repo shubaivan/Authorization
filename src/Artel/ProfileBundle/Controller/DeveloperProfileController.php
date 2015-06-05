@@ -132,7 +132,7 @@ class DeveloperProfileController extends Controller
                 $url = sprintf(
                     '%s%s',
                     $this->container->getParameter('acme_storage.amazon_s3.base_url'),
-                    $this->getPhotoUploader()->uploadFromUrl($data['photo'])
+                    $this->getPhotoUploader()->upload($data['photo'])
                 );
 
                 dump($url);
@@ -142,7 +142,7 @@ class DeveloperProfileController extends Controller
                 $em->flush();
 
 //                return $this->redirect($this->get('router')->generate('artel_profile_homepage'));
-                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)));
+                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#upload-cv');
             }
         }
 
