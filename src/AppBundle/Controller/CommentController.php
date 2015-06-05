@@ -40,9 +40,9 @@ class CommentController extends Controller
             $comment = array();
 
             for ($i = 0; $i < count($photo[0]->getComment()); $i++) {
-                $issues[$i]["author"] = $photo[0]->getComment()[$i]->getAuthor()->getFirstName();
-                $issues[$i]["text"] = $photo[0]->getComment()[$i]->getText();
-                $issues[$i]["createdAt"] = $photo[0]->getComment()[$i]->getCreatedAt()->format("d.m.Y H:i:s");
+                $comment[$i]["author"] = $photo[0]->getComment()[$i]->getAuthor()->getFirstName();
+                $comment[$i]["text"] = $photo[0]->getComment()[$i]->getText();
+                $comment[$i]["createdAt"] = $photo[0]->getComment()[$i]->getCreatedAt()->format("d.m.Y H:i:s");
             }
 
             return new JsonResponse($comment);
