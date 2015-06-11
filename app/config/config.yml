@@ -138,3 +138,7 @@ storage:
 khepin_yaml_fixtures:
     resources:
         - ArtelProfileBundle
+
+##the provider to use
+#skonsoft_cv_editor:
+#    provider_service_id: skonsoft_cv_editor.custom_provider # the new created service

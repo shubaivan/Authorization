@@ -169,6 +169,10 @@
                                                 </div>
                                                 {% include 'ArtelProfileBundle:Developer:add.html.twig' %}
 
+                                                {% if developer.cvUri %}
+                                                    <a href="{{ asset(developer.cvUri) }}" id="cvLink" target="_blank" >Your link for CV</a>
+                                                {% endif %}
+
 											</div>
 											<!-- END CHANGE AVATAR TAB -->
 											<!-- CHANGE PASSWORD TAB -->

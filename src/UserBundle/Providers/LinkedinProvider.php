@@ -21,7 +21,7 @@ class LinkedinProvider
         $userFirstName = strstr($response->getRealName(), ' ', true);
         $userLastName = str_replace(' ', '', strstr($response->getRealName(), ' '));
         // Prepare new User object before adding to database
-//        var_dump($arrResponse);
+//        dump($arrResponse, $response);exit;
         $user
             ->setEnabled(true)
             ->setUsername($userFirstName)
@@ -33,7 +33,7 @@ class LinkedinProvider
             ->setAvatar($response->getProfilePicture())
             ->setRoles(array('ROLE_USER'));
 
-//        dump($user);
+//        dump($user);exit;
         return $user;
     }
 }

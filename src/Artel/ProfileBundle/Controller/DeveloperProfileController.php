@@ -135,7 +135,7 @@ class DeveloperProfileController extends Controller
                     $this->getPhotoUploader()->upload($data['photo'])
                 );
 
-                dump($url);
+//                dump($url, $developer);exit;
 
                 $developer->setCvUri($url);
                 $em->persist($developer);

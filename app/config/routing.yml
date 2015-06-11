@@ -6,6 +6,10 @@ artel_profile:
     resource: "@ArtelProfileBundle/Resources/config/routing.yml"
     prefix:   /pf
 
+#cv_profile:
+#    resource: "@SkonsoftCvEditorBundle/Controller"
+#    type:   annotation
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
