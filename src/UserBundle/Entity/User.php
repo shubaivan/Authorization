@@ -150,6 +150,18 @@ class User extends BaseUser
      */
     protected $comment;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $textCv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cv_dir_uri", type="string", length=255, nullable=true)
+     */
+    private $cvDirUri;
+
     public function isFakeEmail()
     {
         return false === strpos($this->email, '@example.com') && $this->email ? false : true;
@@ -708,5 +720,53 @@ class User extends BaseUser
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set textCv
+     *
+     * @param string $textCv
+     *
+     * @return User
+     */
+    public function setTextCv($textCv)
+    {
+        $this->textCv = $textCv;
+
+        return $this;
+    }
+
+    /**
+     * Get textCv
+     *
+     * @return string
+     */
+    public function getTextCv()
+    {
+        return $this->textCv;
+    }
+
+    /**
+     * Set cvDirUri
+     *
+     * @param string $cvDirUri
+     *
+     * @return User
+     */
+    public function setCvDirUri($cvDirUri)
+    {
+        $this->cvDirUri = $cvDirUri;
+
+        return $this;
+    }
+
+    /**
+     * Get cvDirUri
+     *
+     * @return string
+     */
+    public function getCvDirUri()
+    {
+        return $this->cvDirUri;
     }
 }

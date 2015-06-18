@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb67b47b4f4206cd2251a988bee5e4a2",
+    "hash": "c2b2a720435ac29705458e5cf2072210",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -101,16 +101,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.2.4",
+            "version": "v1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "b5202eb9e83f8db52e0e58867e0a46e63be8332e"
+                "reference": "f4a91702ca3cd2e568c3736aa031ed00c3752af4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/b5202eb9e83f8db52e0e58867e0a46e63be8332e",
-                "reference": "b5202eb9e83f8db52e0e58867e0a46e63be8332e",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/f4a91702ca3cd2e568c3736aa031ed00c3752af4",
+                "reference": "f4a91702ca3cd2e568c3736aa031ed00c3752af4",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +165,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2014-12-23 22:40:37"
+            "time": "2015-06-17 12:21:22"
         },
         {
             "name": "doctrine/cache",
@@ -795,16 +795,16 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
                 "shasum": ""
             },
             "require": {
@@ -815,7 +815,7 @@
                 "ext-pdo": "*",
                 "ext-phar": "*",
                 "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "extra": {
@@ -824,8 +824,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Instantiator\\": "src"
+                "psr-4": {
+                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -845,7 +845,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2014-10-13 12:58:55"
+            "time": "2015-06-14 21:17:01"
         },
         {
             "name": "doctrine/lexer",
@@ -1240,12 +1240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "d7caff8257d7b5807f2f56d03d7bddca6484265b"
+                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/d7caff8257d7b5807f2f56d03d7bddca6484265b",
-                "reference": "d7caff8257d7b5807f2f56d03d7bddca6484265b",
+                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f",
                 "shasum": ""
             },
             "require": {
@@ -1348,7 +1348,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-06-09 12:27:24"
+            "time": "2015-01-09 16:46:23"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1898,6 +1898,102 @@
             "time": "2014-10-10 13:07:37"
         },
         {
+            "name": "phpoffice/phpword",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPWord.git",
+                "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/3f136501b3dfea94766a704e17782c8a942a7b9b",
+                "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "0.6.*",
+                "mpdf/mpdf": "5.*",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "2.*",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "3.7.*",
+                "sebastian/phpcpd": "2.*",
+                "squizlabs/php_codesniffer": "1.*",
+                "tecnick.com/tcpdf": "6.*"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Used to write PDF",
+                "ext-gd2": "Used to add images",
+                "ext-xmlwriter": "Used to write DOCX and ODT",
+                "ext-xsl": "Used to apply XSL style sheet to main document part of OOXML template",
+                "ext-zip": "Used to write DOCX and ODT"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpWord\\": "src/PhpWord"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com",
+                    "homepage": "http://gabrielbull.com/"
+                },
+                {
+                    "name": "Ivan Lanin",
+                    "homepage": "http://ivan.lanin.org"
+                },
+                {
+                    "name": "Roman Syroeshko",
+                    "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
+                }
+            ],
+            "description": "PHPWord - A pure PHP library for reading and writing word processing documents (DOCX, ODT, RTF, HTML, PDF)",
+            "homepage": "http://phpoffice.github.io",
+            "keywords": [
+                "ISO IEC 29500",
+                "OOXML",
+                "Office Open XML",
+                "OpenDocument",
+                "OpenXML",
+                "PhpOffice",
+                "PhpWord",
+                "Rich Text Format",
+                "WordprocessingML",
+                "doc",
+                "docx",
+                "html",
+                "odt",
+                "office",
+                "pdf",
+                "php",
+                "reader",
+                "rtf",
+                "template",
+                "template processor",
+                "word",
+                "writer"
+            ],
+            "time": "2015-01-03 09:42:48"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -2094,6 +2190,49 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-05-28 14:22:40"
+        },
+        {
+            "name": "smalot/pdfparser",
+            "version": "v0.9.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smalot/pdfparser.git",
+                "reference": "613d00cde8d91825bc3ed8b41411aaf9c75c1d6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smalot/pdfparser/zipball/613d00cde8d91825bc3ed8b41411aaf9c75c1d6e",
+                "reference": "613d00cde8d91825bc3ed8b41411aaf9c75c1d6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "tecnick.com/tcpdf": ">=6.0.050"
+            },
+            "require-dev": {
+                "atoum/atoum": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Smalot\\PdfParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastien MALOT",
+                    "email": "sebastien@malot.fr",
+                    "homepage": "http://www.malot.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pdf parser library. Can read and extract information from pdf file.",
+            "homepage": "http://www.pdfparser.org",
+            "time": "2015-05-26 08:06:39"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -2509,6 +2648,69 @@
             "time": "2015-05-29 22:55:07"
         },
         {
+            "name": "tecnick.com/tcpdf",
+            "version": "6.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "3dee9e7f3a414875fd1d9f4f1dfc2433493a86d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/3dee9e7f3a414875fd1d9f4f1dfc2433493a86d2",
+                "reference": "3dee9e7f3a414875fd1d9f4f1dfc2433493a86d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fonts",
+                    "config",
+                    "include",
+                    "tcpdf.php",
+                    "tcpdf_parser.php",
+                    "tcpdf_import.php",
+                    "tcpdf_barcodes_1d.php",
+                    "tcpdf_barcodes_2d.php",
+                    "include/tcpdf_colors.php",
+                    "include/tcpdf_filters.php",
+                    "include/tcpdf_font_data.php",
+                    "include/tcpdf_fonts.php",
+                    "include/tcpdf_images.php",
+                    "include/tcpdf_static.php",
+                    "include/barcodes/datamatrix.php",
+                    "include/barcodes/pdf417.php",
+                    "include/barcodes/qrcode.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "homepage": "http://nicolaasuni.tecnick.com"
+                }
+            ],
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+            "homepage": "http://www.tcpdf.org/",
+            "keywords": [
+                "PDFD32000-2008",
+                "TCPDF",
+                "barcodes",
+                "datamatrix",
+                "pdf",
+                "pdf417",
+                "qrcode"
+            ],
+            "time": "2015-04-29 16:13:58"
+        },
+        {
             "name": "twig/extensions",
             "version": "v1.2.0",
             "source": {
@@ -2676,11 +2878,16 @@
         "knplabs/gaufrette": 20,
         "knplabs/knp-gaufrette-bundle": 20,
         "amazonwebservices/aws-sdk-for-php": 20,
-        "hautelook/alice-bundle": 20
+        "hautelook/alice-bundle": 20,
+        "phpoffice/phpword": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*",
         "php": ">=5.3.3"
     },
     "platform-dev": []

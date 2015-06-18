@@ -4,7 +4,12 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--<parameters></parameters>-->
+    <parameters>
+        <parameter key="docx">Artel\ProfileBundle\Services\ParseDocxFile</parameter>
+        <parameter key="pdf">Artel\ProfileBundle\Services\ParsePdf</parameter>
+        <parameter key="doc">Artel\ProfileBundle\Services\ParseDoc</parameter>
+        <parameter key="all">Artel\ProfileBundle\Services\BossParse</parameter>
+    </parameters>
 
     <services>
         <service id="artel.profile.developer.repository"
@@ -39,6 +44,21 @@
         <service id="artel.profile.file_uploader"
                  class="Artel\ProfileBundle\Helper\FileUploader">
             <argument type="service" id="artel.profile.image_worker" />
+        </service>
+
+        <service id="parse_docx" class="%docx%">
+
+        </service>
+        <service id="parse_pdf" class="%pdf%">
+
+        </service>
+        <service id="parse_doc" class="%doc%">
+
+        </service>
+        <service id="parse_all" class="%all%">
+            <argument type="service" id="parse_doc" />
+            <argument type="service" id="parse_pdf" />
+            <argument type="service" id="parse_docx" />
         </service>
     </services>
 

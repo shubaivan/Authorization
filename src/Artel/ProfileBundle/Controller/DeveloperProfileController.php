@@ -6,7 +6,7 @@ use Artel\ProfileBundle\Form\DeveloperAvatarType;
 use Artel\ProfileBundle\Form\DeveloperPersonalInformationType;
 use Artel\ProfileBundle\Form\DeveloperProfessionalSkillsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Artel\ProfileBundle\Form\DeveloperCvType;
+use Artel\ProfileBundle\Form\DeveloperAllCvType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
@@ -33,13 +33,13 @@ class DeveloperProfileController extends Controller
         $form = $this->createForm($formType, $developer);
         $professionalSkillsForm = $form->createView();
 
-        $form = $this->createForm(new DeveloperCvType());
+        $all_cv = $this->createForm(new DeveloperAllCvType());
 
         return $this->render('ArtelProfileBundle:'.$this->template.':index.html.twig',array(
             'developer' => $developer,
             'infoForm' => $personalInformationForm,
             'skillsForm' => $professionalSkillsForm,
-            "CvForm" => $form->createView(),
+            "AllCv" => $all_cv->createView(),
         ));
     }
 
@@ -117,38 +117,73 @@ class DeveloperProfileController extends Controller
         return new Response($url);
     }
 
-    public function addAction($id)
+    public function cvUploadAllAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
         $developer = $em->getRepository('UserBundle:User')->findOneById($id);
 
-        $form = $this->createForm(new DeveloperCvType(), array());
+        if (! $developer) {
+            throw $this->createNotFoundException('Unable to find a profile.');
+        }
+
+        $cv = $developer->getCvDirUri();
+
+        if ($cv && file_exists($cv)) {
+            unlink($cv);
+        }
+
+        $form = $this->createForm(new DeveloperAllCvType(), array());
 
         if ($request->isMethod('POST')) {
+
             $form->bind($request);
             if ($form->isValid()) {
+
                 $data = $form->getData();
+
+                $uploader = $this->get('artel.profile.file_uploader');
+                $path = $uploader->uploadFile($data['photo']);
+                $developer->setCvDirUri($path['url']);
+
+                $content = shell_exec('/usr/bin/antiword '.'chmod o+r /var/www/aog-profile/web/'.$path['url']);
+
+//                $content = $this ->get('parse_all')->parse('/var/www/aog-profile/web/'.$path['url'], $data['photo']->getClientMimeType());
+
+
+                if ($data['photo']->getClientMimeType() == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+
+                    $content = $this->get('parse_docx')->read_file_docx('/var/www/aog-profile/web/'.$path['url']);
+
+                } elseif ($data['photo']->getClientMimeType() == 'application/pdf') {
+
+                    $content = $this->get('parse_pdf')->parse('/var/www/aog-profile/web/'.$path['url']);
+
+                } else {
+                    $content = $this->get('parse_doc')->parse('/var/www/aog-profile/web/'.$path['url']);
+
+                }
+
                 $url = sprintf(
                     '%s%s',
                     $this->container->getParameter('acme_storage.amazon_s3.base_url'),
-                    $this->getPhotoUploader()->upload($data['photo'])
+                    $this->getPhotoUploader()->uploadFromUrl($path['url'])
                 );
 
-//                dump($url, $developer);exit;
-
+                $developer->setTextCv($content);
                 $developer->setCvUri($url);
-                $em->persist($developer);
+
                 $em->flush();
 
-//                return $this->redirect($this->get('router')->generate('artel_profile_homepage'));
-                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#upload-cv');
+                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#cv');
             }
         }
 
         return array(
             "form" => $form->createView(),
         );
+
     }
 
     /**

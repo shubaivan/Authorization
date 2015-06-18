@@ -147,7 +147,7 @@
 										</div>
 										<ul class="nav nav-tabs">
 											<li>
-												<a href="#upload-cv" data-toggle="tab">Upload CV</a>
+												<a href="#cv" data-toggle="tab">Upload CV</a>
 											</li>
 											<li>
 												<a href="#professional-skills" data-toggle="tab">Profesional skills</a>
@@ -163,17 +163,22 @@
 									<div class="portlet-body">
 										<div class="tab-content">
 											<!-- CHANGE AVATAR TAB -->
-											<div class="tab-pane" id="upload-cv">
+                                            <div class="tab-pane" id="cv">
                                                 <div class="caption caption-md margin-bottom-15">
-                                                    <span class="caption-subject font-green bold uppercase">Upload your CV here</span>
+                                                    <span class="caption-subject font-green bold uppercase">Upload your CV</span>
                                                 </div>
-                                                {% include 'ArtelProfileBundle:Developer:add.html.twig' %}
-
-                                                {% if developer.cvUri %}
-                                                    <a href="{{ asset(developer.cvUri) }}" id="cvLink" target="_blank" >Your link for CV</a>
+                                                {% include 'ArtelProfileBundle:Developer:all_cv.html.twig' %}
+                                                {% if developer.cvDirUri %}
+                                                    <a href="{{ asset(developer.cvDirUri) }}" id="cvLink" target="_blank" >Your link for CV Dir</a>
                                                 {% endif %}
-
-											</div>
+                                                <br>
+                                                {% if developer.cvUri %}
+                                                <a href="{{ asset(developer.cvUri) }}" id="cvLink" target="_blank" >Your link for CV Amazon</a>
+                                                {% endif %}<br>
+                                                {% if developer.textCv %}
+                                                    <span class="caption-subject font-green bold uppercase"><pre>{{ asset(developer.textCv) }}</pre></span>
+                                                {% endif %}
+                                            </div>
 											<!-- END CHANGE AVATAR TAB -->
 											<!-- CHANGE PASSWORD TAB -->
 											<div class="tab-pane" id="professional-skills">
