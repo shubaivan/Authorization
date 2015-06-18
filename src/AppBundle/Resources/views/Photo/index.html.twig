@@ -11,13 +11,23 @@
     <div class="container">
 
         <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Rules:
-                    <small>If you want upload foto you must enter in socail network Fa or Ld</small>
-                </h1>
+        {% if app.user %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Rules:
+                        <small>Good, you do it right, upload foto</small>
+                    </h1>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Rules:
+                        <small>If you want upload foto you must enter in socail network Fa or Vk</small>
+                    </h1>
+                </div>
+            </div>
+        {% endif %}
         <!-- /.row -->
 
         <!-- Project One -->
