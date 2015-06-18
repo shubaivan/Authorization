@@ -96,7 +96,7 @@ hwi_oauth:
         properties:
             # these properties will be used/redefined later in the custom FOSUBUserProvider service.
             facebook: facebookId
-#            vkontakte: vkontakteId
+            vkontakte: vkontakteId
             linkedin: linkedinId
     resource_owners:
         facebook:
@@ -104,11 +104,13 @@ hwi_oauth:
             client_id:           "%facebook_app_id%"
             client_secret:       "%facebook_app_secret%"
             scope:               "email"
-#        vkontakte:
-#            type:                vkontakte
-#            client_id:           "%vkontakte_app_id%"
-#            client_secret:       "%vkontakte_app_secret%"
-#            scope:               "photos"
+        vkontakte:
+            type:                vkontakte
+            client_id:           "%vkontakte_app_id%"
+            client_secret:       "%vkontakte_app_secret%"
+            scope:               photos,email
+            options:
+                fields: domain,contacts,connections,sex,photo_200
         linkedin:
             type:           linkedin
             client_id:      "%linkedin_app_id%"

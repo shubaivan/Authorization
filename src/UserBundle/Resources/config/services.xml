@@ -13,15 +13,15 @@
             <argument type="service" id="fos_user.user_manager" />
             <argument type="collection">
                 <argument key="facebook">facebookId</argument>
-                <!--<argument key="vkontakte">vkontakteId</argument>-->
+                <argument key="vkontakte">vkontakteId</argument>
                 <argument key="linkedin">linkedinId</argument>
             </argument>
             <call method="setFacebookProvider">
                 <argument type="service" id="geekhub.user.facebook_provider" />
             </call>
-            <!--<call method="setVkontakteProvider">-->
-                <!--<argument type="service" id="geekhub.user.vkontakte_provider" />-->
-            <!--</call>-->
+            <call method="setVkontakteProvider">
+                <argument type="service" id="geekhub.user.vkontakte_provider" />
+            </call>
             <call method="setLinkedinProvider">
                 <argument type="service" id="geekhub.user.linkedin_provider" />
             </call>
@@ -29,7 +29,7 @@
         </service>
 
         <service id="geekhub.user.facebook_provider" class="UserBundle\Providers\FacebookProvider" />
-        <!--<service id="geekhub.user.vkontakte_provider" class="UserBundle\Providers\VkontakteProvider"/>-->
+        <service id="geekhub.user.vkontakte_provider" class="UserBundle\Providers\VkontakteProvider"/>
         <service id="geekhub.user.linkedin_provider" class="UserBundle\Providers\LinkedinProvider"/>
     </services>
 

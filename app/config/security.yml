@@ -26,7 +26,7 @@ security:
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"
-#                    vkontakte:             "/login/check-vkontakte"
+                    vkontakte:             "/login/check-vkontakte"
                     linkedin:             "/auth/linkedin"
                 login_path:        /login
                 failure_path:      /login

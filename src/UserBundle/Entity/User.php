@@ -162,6 +162,21 @@ class User extends BaseUser
      */
     private $cvDirUri;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $socialNetworkUrl;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $gender;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $socialNetworkName;
+
     public function isFakeEmail()
     {
         return false === strpos($this->email, '@example.com') && $this->email ? false : true;
@@ -768,5 +783,77 @@ class User extends BaseUser
     public function getCvDirUri()
     {
         return $this->cvDirUri;
+    }
+
+    /**
+     * Set socialNetworkUrl
+     *
+     * @param string $socialNetworkUrl
+     *
+     * @return User
+     */
+    public function setSocialNetworkUrl($socialNetworkUrl)
+    {
+        $this->socialNetworkUrl = $socialNetworkUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get socialNetworkUrl
+     *
+     * @return string
+     */
+    public function getSocialNetworkUrl()
+    {
+        return $this->socialNetworkUrl;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     *
+     * @return User
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set socialNetworkName
+     *
+     * @param string $socialNetworkName
+     *
+     * @return User
+     */
+    public function setSocialNetworkName($socialNetworkName)
+    {
+        $this->socialNetworkName = $socialNetworkName;
+
+        return $this;
+    }
+
+    /**
+     * Get socialNetworkName
+     *
+     * @return string
+     */
+    public function getSocialNetworkName()
+    {
+        return $this->socialNetworkName;
     }
 }
