@@ -17,6 +17,7 @@ class FacebookProvider
     public function setUserData(User $user, UserResponseInterface $response)
     {
         $arrResponse = $response->getResponse();
+        $responseArray = $response->getResponse();
 
         $userFirstName = strstr($response->getRealName(), ' ', true);
         $userLastName = str_replace(' ', '', strstr($response->getRealName(), ' '));
@@ -24,10 +25,10 @@ class FacebookProvider
 
         $user
             ->setEnabled(true)
-            ->setUsername($userFirstName)
-            ->setFirstName($userFirstName)
-            ->setLastName($userLastName)
-            ->setEmail($userFirstName)
+            ->setUsername($response->getNickname())
+            ->setFirstName($responseArray['first_name'])
+            ->setLastName($responseArray['last_name'])
+            ->setEmail($response->getEmail())
 
             ->setPassword(md5($response->getAccessToken()))
             ->setAvatar('http://graph.facebook.com/' . $response->getUsername() . '/picture?width=250&height=250')
