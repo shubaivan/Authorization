@@ -27,3 +27,5 @@ parameters:
     facebook_app_secret: ~
     linkedin_app_id: ~
     linkedin_app_secret: ~
+    vkontakte_app_id: ~
+    vkontakte_app_secret: ~
