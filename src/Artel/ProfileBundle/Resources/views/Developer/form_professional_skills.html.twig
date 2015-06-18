@@ -1,6 +1,6 @@
 
 {{ form_errors(skillsForm) }}
-{{ form_start(skillsForm, {'action': path('artel_profile_submit_professional_skills', {'id': developer.id}), 'method': 'POST'}) }}
+{{ form_start(skillsForm, {'action': path('artel_profile_submit_professional_skills', {'slug': developer.slug}), 'method': 'POST'}) }}
 
 <div class="form-group">
     {{ form_label(skillsForm.level, label|default(null), {'label_attr': {'class': 'control-label'}}) }}

@@ -20,7 +20,7 @@
 
         <!-- PHOTO UPLOAD START -->
         <div class="photoLoader">
-            <form id="avatarForm" action={{ path("artel_profile_photo_upload", {'id': developer.id}) }} method="post" enctype="multipart/form-data">
+            <form id="avatarForm" action={{ path("artel_profile_photo_upload", {'slug': developer.slug}) }} method="post" enctype="multipart/form-data">
                 <label>
                     <input id="Avatar" type="file" name="file"/>
                     <input type="submit" name="submitBtn" class="sbtn" value="Upload" />

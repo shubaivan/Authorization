@@ -15,11 +15,11 @@ class DeveloperProfileController extends Controller
 {
     protected $template = 'Developer';
 
-    public function indexAction($id)
+    public function indexAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneBySlug($slug);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -43,11 +43,11 @@ class DeveloperProfileController extends Controller
         ));
     }
 
-    public function submitPersonalInformationAction($id)
+    public function submitPersonalInformationAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneBySlug($slug);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -59,7 +59,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#personal-information');
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('slug' => $slug)).'#personal-information');
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_personal_information.html.html.twig',array(
@@ -70,11 +70,11 @@ class DeveloperProfileController extends Controller
         return $response;
     }
 
-    public function submitProfessionalSkillsAction($id)
+    public function submitProfessionalSkillsAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneBySlug($slug);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -86,7 +86,7 @@ class DeveloperProfileController extends Controller
         if ($form->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#professional-skills');
+            return $this->redirect($this->generateUrl('artel_profile_homepage', array('slug' => $slug)).'#professional-skills');
         }
 
         $response = $this->render('ArtelProfileBundle:'.$this->template.':form_professional_skills.html.twig',array(
@@ -97,11 +97,11 @@ class DeveloperProfileController extends Controller
         return $response;
     }
 
-    public function photoUploadAction($id)
+    public function photoUploadAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($slug);
 
         $url = sprintf(
             '%s%s',
@@ -117,12 +117,12 @@ class DeveloperProfileController extends Controller
         return new Response($url);
     }
 
-    public function cvUploadAllAction($id)
+    public function cvUploadAllAction($slug)
     {
 
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($id);
+        $developer = $em->getRepository('UserBundle:User')->findOneById($slug);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');
@@ -176,7 +176,7 @@ class DeveloperProfileController extends Controller
 
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('artel_profile_homepage', array('id' => $id)).'#cv');
+                return $this->redirect($this->generateUrl('artel_profile_homepage', array('slug' => $slug)).'#cv');
             }
         }
 

@@ -1,5 +1,5 @@
 {{ form_errors(AllCv) }}
-{{ form_start(AllCv, {'action': path('artel_allcv', {'id': developer.id}), 'method': 'POST'}) }}
+{{ form_start(AllCv, {'action': path('artel_allcv', {'slug': developer.slug}), 'method': 'POST'}) }}
 
 <div class="form-group">
 

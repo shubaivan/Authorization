@@ -1,7 +1,7 @@
 {#{% include "ArtelProfileBundle:Developer:profile_sidebar.html.twig" %}#}
 
 {{ form_errors(infoForm) }}
-{{ form_start(infoForm, {'action': path('artel_profile_submit_personal_information', {'id': developer.id}), 'method': 'POST'}) }}
+{{ form_start(infoForm, {'action': path('artel_profile_submit_personal_information', {'slug': developer.slug}), 'method': 'POST'}) }}
 
 <div class="form-group">
     {{ form_label(infoForm.firstname, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
