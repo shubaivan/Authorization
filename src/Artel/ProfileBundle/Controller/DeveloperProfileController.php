@@ -122,7 +122,7 @@ class DeveloperProfileController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
-        $developer = $em->getRepository('UserBundle:User')->findOneById($slug);
+        $developer = $em->getRepository('UserBundle:User')->findOneBySlug($slug);
 
         if (! $developer) {
             throw $this->createNotFoundException('Unable to find a profile.');

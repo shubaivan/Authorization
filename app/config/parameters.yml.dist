@@ -29,3 +29,5 @@ parameters:
     linkedin_app_secret: ~
     vkontakte_app_id: ~
     vkontakte_app_secret: ~
+    github_app_id: ~
+    github_app_secret: ~

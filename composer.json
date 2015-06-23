@@ -98,6 +98,8 @@
                 "linkedin_app_secret": "LINKEDIN_APP_SECRET",
                 "vkontakte_app_id": "VKONTAKTE_APP_ID",
                 "vkontakte_app_secret": "VKONTAKTE_APP_SECRET",
+                "github_app_id": "GITHUB_APP_ID",
+                "github_app_secret": "GITHUB_APP_SECRET",
                 "amazon_s3_bucket_name": "AMAZON_S3_BUCKET_NAME",
                 "amazon_aws_key": "AMAZON_AWS_KEY",
                 "amazon_aws_secret_key": "AMAZON_AWS_SECRET_KEY",
