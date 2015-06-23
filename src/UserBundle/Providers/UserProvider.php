@@ -14,6 +14,8 @@ class UserProvider extends BaseClass
 
     private $linkedinProvider;
 
+    private $githubProvider;
+
     /**
      * {@inheritDoc}
      */
@@ -49,30 +51,45 @@ class UserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
+        $email = $response->getEmail();
 
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
 
         //when the user is registrating
         if (null === $user) {
+
+            $user = $this->userManager->findUserByEmail($email);
+
             $service = $response->getResourceOwner()->getName();
-            $setter = 'set'.ucfirst($service);
-            $setter_id = $setter.'Id';
-            $setter_token = $setter.'AccessToken';
-            // create new user here
-            $user = $this->userManager->createUser();
-            $user->$setter_id($username);
-            $user->$setter_token($response->getAccessToken());
-            //I have set all requested data with the user's username
-            //modify here with relevant data
+            $setter = 'set' . ucfirst($service);
+            $setterId = $setter . 'Id';
+            $setterToken = $setter . 'AccessToken';
+            if (null === $user) {
+                $user = $this->userManager->createUser();
+                $user->$setterId($username);
+                $user->$setterToken($response->getAccessToken());
 
-            $serviceProvider = $service."Provider";
+                $serviceProvider = $service."Provider";
 
-            $user = $this->$serviceProvider->setUserData($user, $response);
+                $user = $this->$serviceProvider->setUserData($user, $response);
 
-            $this->userManager->updateUser($user);
+                $this->userManager->updateUser($user);
 
-            return $user;
+                return $user;
+            }else {
+                $user->$setterId($username);
+                $user->$setterToken($response->getAccessToken());
+
+                $serviceProvider = $service."Provider";
+
+                $user = $this->$serviceProvider->setUserData($user, $response);
+
+                $this->userManager->updateUser($user);
+
+                return $user;
+            }
         }
+
 
         //if user exists - go with the HWIOAuth way
         $user = parent::loadUserByOAuthUserResponse($response);
@@ -99,5 +116,10 @@ class UserProvider extends BaseClass
     public function setLinkedinProvider(LinkedinProvider $linkedinProvider)
     {
         $this->linkedinProvider = $linkedinProvider;
+    }
+
+    public function setGithubProvider(GithubProvider $githubProvider)
+    {
+        $this->githubProvider = $githubProvider;
     }
 }

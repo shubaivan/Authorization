@@ -43,6 +43,9 @@ vkontakte_check:
 linkedin_check:
   pattern: /auth/linkedin
 
+github_check:
+  pattern: /oauth/authorize
+
 user_update_profile:
   pattern: /profile/update
   defaults: { _controller: UserBundle:User:updateContacts }

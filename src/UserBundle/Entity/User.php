@@ -63,6 +63,16 @@ class User extends BaseUser
     protected $linkedinAccessToken;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $githubId;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $githubAccessToken;
+
+    /**
      * @Gedmo\Slug(fields={"firstName", "lastName"})
      * @ORM\Column(type="string")
      */
@@ -855,5 +865,53 @@ class User extends BaseUser
     public function getSocialNetworkName()
     {
         return $this->socialNetworkName;
+    }
+
+    /**
+     * Set githubId
+     *
+     * @param string $githubId
+     *
+     * @return User
+     */
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    /**
+     * Get githubId
+     *
+     * @return string
+     */
+    public function getGithubId()
+    {
+        return $this->githubId;
+    }
+
+    /**
+     * Set githubAccessToken
+     *
+     * @param string $githubAccessToken
+     *
+     * @return User
+     */
+    public function setGithubAccessToken($githubAccessToken)
+    {
+        $this->githubAccessToken = $githubAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get githubAccessToken
+     *
+     * @return string
+     */
+    public function getGithubAccessToken()
+    {
+        return $this->githubAccessToken;
     }
 }

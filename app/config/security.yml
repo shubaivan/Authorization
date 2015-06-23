@@ -28,6 +28,7 @@ security:
                     facebook:           "/login/check-facebook"
                     vkontakte:             "/login/check-vkontakte"
                     linkedin:             "/auth/linkedin"
+                    github:             "/oauth/authorize"
                 login_path:        /login
                 failure_path:      /login
 

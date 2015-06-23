@@ -98,6 +98,7 @@ hwi_oauth:
             facebook: facebookId
             vkontakte: vkontakteId
             linkedin: linkedinId
+            github: githubId
     resource_owners:
         facebook:
             type:                facebook
@@ -116,6 +117,11 @@ hwi_oauth:
             client_id:      "%linkedin_app_id%"
             client_secret:  "%linkedin_app_secret%"
             scope:          "r_emailaddress"
+        github:
+            type:                github
+            client_id:           "%github_app_id%"
+            client_secret:       "%github_app_secret%"
+            scope:              "user,public_repo"
 
 knp_gaufrette:
     adapters:
